@@ -41,6 +41,7 @@
     <modules>
         <module>springboot3-multi-tenant</module>
         <module>springboot3-mvc</module>
+        <module>oauth-demo</module>
     </modules>
 
 
