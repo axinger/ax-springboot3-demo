@@ -14,7 +14,7 @@ import java.util.Map;
 @RestController
 public class UserController {
 
-    @RequestMapping(path = "/user/info", method = {RequestMethod.GET,RequestMethod.POST}, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(path = "/user/info", method = {RequestMethod.GET, RequestMethod.POST}, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public Map<String, Object> getUser(HttpServletRequest request, HttpServletResponse response) {
         Map<String, Object> map = new HashMap<>();
