@@ -1,0 +1,10 @@
+spring:
+  jackson:
+    date-format: yyyy年MM月dd HH:mm:ss
+  gson:
+    date-format: yyyy年MM月dd HH:mm:ss
+  mvc:
+    converters:
+      preferred-json-mapper: gson
+#      preferred-json-mapper: jackson
+
