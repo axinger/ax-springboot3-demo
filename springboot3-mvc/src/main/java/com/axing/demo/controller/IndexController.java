@@ -18,7 +18,7 @@ public class IndexController {
         Map<String, Object> map = new HashMap<>();
 
         map.put("LocalDateTime", LocalDateTime.now());
-        map.put("Date",new Date());
+        map.put("Date", new Date());
         map.put("LocalDate", LocalDate.now());
         return map;
     }

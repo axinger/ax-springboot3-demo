@@ -6,9 +6,8 @@
     <parent>
         <groupId>com.github.axinger</groupId>
         <artifactId>springboot3-multi-tenant</artifactId>
-        <version>3.0.4.1</version>
+        <version>3.2.1.1</version>
     </parent>
-
     <artifactId>b01-1-multi-tenant-partition</artifactId>
     <description>多租户,分库</description>
 

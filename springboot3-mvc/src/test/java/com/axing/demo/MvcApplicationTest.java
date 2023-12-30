@@ -3,7 +3,6 @@ package com.axing.demo;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.web.client.RestClient;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.Map;
@@ -30,8 +29,7 @@ class MvcApplicationTest {
                 .uri("say1/{content}", "hello")
                 .body(Map.of())
                 .retrieve()
-                .body(String.class)
-        ;
+                .body(String.class);
 
 
         WebClient.builder()

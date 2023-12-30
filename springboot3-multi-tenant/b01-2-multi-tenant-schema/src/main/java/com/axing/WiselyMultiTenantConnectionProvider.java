@@ -13,7 +13,7 @@ import java.util.Map;
 
 
 @Component
-public class WiselyMultiTenantConnectionProvider implements MultiTenantConnectionProvider, HibernatePropertiesCustomizer {
+public class WiselyMultiTenantConnectionProvider implements MultiTenantConnectionProvider<String>, HibernatePropertiesCustomizer {
 
 
     private final DataSource dataSource;
@@ -32,6 +32,7 @@ public class WiselyMultiTenantConnectionProvider implements MultiTenantConnectio
     public void releaseAnyConnection(Connection connection) throws SQLException {
         connection.close();
     }
+
 
     @Override
     public Connection getConnection(String tenantIdentifier) throws SQLException {

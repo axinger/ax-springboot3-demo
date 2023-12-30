@@ -13,7 +13,7 @@ import java.util.Map;
 
 
 @Component
-public class WiselyMultiTenantConnectionProvider implements MultiTenantConnectionProvider, HibernatePropertiesCustomizer {
+public class WiselyMultiTenantConnectionProvider implements MultiTenantConnectionProvider<String>, HibernatePropertiesCustomizer {
 
 
     private final DataSource dataSource;
