@@ -32,7 +32,7 @@
         <mybatis-starter.version>3.0.1</mybatis-starter.version>
         <mybatis-plus.version>3.5.3.1</mybatis-plus.version>
         <guava.version>32.1.2-jre</guava.version>
-        <hutool.version>5.8.21</hutool.version>
+        <hutool.version>5.8.24</hutool.version>
         <fastjson2.version>2.0.40</fastjson2.version>
         <lombok.version>1.18.28</lombok.version>
         <druid.version>1.2.15</druid.version>
@@ -83,7 +83,6 @@
         <module>a33-docker-jar</module>
         <module>a37-data-rest</module>
         <module>a38-xxl-job</module>
-
         <module>a39-springboot3-multi-tenant</module>
         <module>a40-springboot3-mvc</module>
         <module>a41-springboot3-oauth-demo</module>
