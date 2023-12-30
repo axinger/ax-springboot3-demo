@@ -10,7 +10,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>rocketmq-demo</artifactId>
-
+<!--    demo-->
+<!--    https://github.com/alibaba/spring-cloud-alibaba/blob/2022.x/spring-cloud-alibaba-examples/rocketmq-example/readme-zh.md-->
     <dependencies>
 
         <dependency>
@@ -23,10 +24,15 @@
             <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
 
+<!--        <dependency>-->
+<!--            <groupId>org.apache.rocketmq</groupId>-->
+<!--            <artifactId>rocketmq-spring-boot-starter</artifactId>-->
+<!--            <version>2.2.3</version>-->
+<!--        </dependency>-->
+
         <dependency>
-            <groupId>org.apache.rocketmq</groupId>
-            <artifactId>rocketmq-spring-boot-starter</artifactId>
-            <version>2.2.3</version>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-stream-rocketmq</artifactId>
         </dependency>
     </dependencies>
 
