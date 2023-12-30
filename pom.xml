@@ -84,9 +84,9 @@
         <module>a37-data-rest</module>
         <module>a38-xxl-job</module>
 
-        <module>springboot3-multi-tenant</module>
-        <module>springboot3-mvc</module>
-        <module>oauth-demo</module>
+        <module>a39-springboot3-multi-tenant</module>
+        <module>a40-springboot3-mvc</module>
+        <module>a41-springboot3-oauth-demo</module>
 
     </modules>
 

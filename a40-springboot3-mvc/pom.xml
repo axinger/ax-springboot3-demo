@@ -9,7 +9,7 @@
         <version>3.2.1.1</version>
     </parent>
 
-    <artifactId>springboot3-mvc</artifactId>
+    <artifactId>a40-springboot3-mvc</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
