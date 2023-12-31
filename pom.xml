@@ -10,6 +10,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.2.1</version>
+<!--        <version>3.0.2</version>-->
     </parent>
 
     <groupId>com.github.axinger</groupId>
@@ -74,7 +75,7 @@
         <module>a05-spring-boot-excel</module>
         <module>a06-spring-cloud</module>
         <module>a07-spring-cloud-alibaba</module>
-        <module>spring-cloud-alibaba-examples</module>
+        <module>a07-spring-cloud-alibaba-examples</module>
         <module>a08-spring-boot-mapstruct</module>
         <module>a09-spring-boot-es</module>
         <module>a09-spring-boot-es2</module>
@@ -588,7 +589,7 @@
             <dependency>
                 <groupId>org.springdoc</groupId>
                 <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-                <version>2.1.0</version>
+                <version>2.3.0</version>
             </dependency>
 
             <!--            springboot2-->

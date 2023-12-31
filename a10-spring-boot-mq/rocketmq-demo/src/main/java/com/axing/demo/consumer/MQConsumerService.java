@@ -2,9 +2,11 @@ package com.axing.demo.consumer;
 
 import com.alibaba.fastjson2.JSON;
 import com.axing.demo.config.Topic;
+import com.axing.demo.model.MessageWrapper;
 import com.axing.demo.model.User;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.common.message.MessageExt;
+import org.apache.rocketmq.spring.annotation.ConsumeMode;
 import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
 import org.apache.rocketmq.spring.annotation.SelectorType;
 import org.apache.rocketmq.spring.core.RocketMQListener;
@@ -92,5 +94,19 @@ public class MQConsumerService {
             log.info("Con_Group_Three 监听到消息：msg={}", msg);
         }
     }
+
+
+    @Service
+    @RocketMQMessageListener(topic = Topic.sync_user_topic, consumerGroup = "user_consumer", selectorExpression = "*"
+//           , consumeMode = ConsumeMode.ORDERLY
+    )
+    @Slf4j
+    public static class syncUserConsumer implements RocketMQListener<MessageWrapper> {
+        @Override
+        public void onMessage(MessageWrapper mes) {
+            log.info("user consumer message : {}", JSON.toJSONString(mes));
+        }
+    }
+
 
 }

@@ -30,9 +30,14 @@
             <version>2.2.3</version>
         </dependency>
 
+<!--        <dependency>-->
+<!--            <groupId>com.alibaba.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-starter-stream-rocketmq</artifactId>-->
+<!--        </dependency>-->
+
         <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-stream-rocketmq</artifactId>
+            <groupId>com.github.axinger</groupId>
+            <artifactId>doc-spring-boot-starter</artifactId>
         </dependency>
     </dependencies>
 

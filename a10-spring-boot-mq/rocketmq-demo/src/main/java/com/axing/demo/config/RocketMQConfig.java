@@ -7,8 +7,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RocketMQConfig {
 
-    @Bean
-    public RocketMQTemplate rocketMQTemplate() {
-        return new RocketMQTemplate();
-    }
+//    @Bean
+//    public RocketMQTemplate rocketMQTemplate() {
+//        return new RocketMQTemplate();
+//    }
 }
