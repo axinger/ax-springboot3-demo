@@ -18,7 +18,6 @@ package com.alibaba.cloud.integration.order.feign;
 
 import com.alibaba.cloud.integration.common.Result;
 import com.alibaba.cloud.integration.order.feign.dto.AccountDTO;
-
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,7 +28,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 @FeignClient(name = "integrated-account")
 public interface AccountServiceFeignClient {
 
-	@PostMapping("/account/reduce-balance")
-	Result<?> reduceBalance(@RequestBody AccountDTO accountReduceBalanceDTO);
+    @PostMapping("/account/reduce-balance")
+    Result<?> reduceBalance(@RequestBody AccountDTO accountReduceBalanceDTO);
 
 }

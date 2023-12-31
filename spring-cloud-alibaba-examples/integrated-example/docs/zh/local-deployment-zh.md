@@ -24,6 +24,7 @@
 ### Hosts配置
 
 为了保证代码可以正常启动，请先配置好本机的 host 映射，在配置文件中新增如下的映射。
+
 ```shell
 # for integrated-example
 127.0.0.1 integrated-mysql
@@ -42,7 +43,8 @@
 
 针对第一个场景，订单、账户、库存微服务都需要各自的数据库，而第二个场景模拟点赞也需要存储点赞信息的数据库。
 
-运行 `spring-cloud-alibaba-examples/integrated-example/config-init/sql/init.sql` 的 sql 脚本一键创建业务所需的环境以及 Seata 相关的表。
+运行 `spring-cloud-alibaba-examples/integrated-example/config-init/sql/init.sql` 的 sql 脚本一键创建业务所需的环境以及
+Seata 相关的表。
 
 ### Nacos配置
 
@@ -63,7 +65,8 @@ bash bin/startup.sh -m standalone
 
 #### 新增配置文件
 
-在批量导入配置之前，请先修改 `spring-cloud-alibaba-examples/integrated-example/config-init/config/datasource-config.yaml` 中的数据源配置**（用户名和密码）**。
+在批量导入配置之前，请先修改 `spring-cloud-alibaba-examples/integrated-example/config-init/config/datasource-config.yaml`
+中的数据源配置**（用户名和密码）**。
 
 之后运行 `spring-cloud-alibaba-examples/integrated-example/config-init/scripts/nacos-config-quick.sh` 来完成所有微服务配置的一键导入。
 
@@ -77,7 +80,8 @@ sh nacos-config-quick.sh
 
 Nacos 服务注册中心以及配置中心部署完毕之后，下面是 Seata 服务端的配置。
 
-Seata 的 db 模式需要额外配置数据库信息以及修改 Seata 服务端的配置文件，且在新版本中配置文件相较于旧版本进行了合并，因此这里为了便于演示方便，采用 Seata 单机的`file`模式启动 Seata Server。
+Seata 的 db 模式需要额外配置数据库信息以及修改 Seata 服务端的配置文件，且在新版本中配置文件相较于旧版本进行了合并，因此这里为了便于演示方便，采用
+Seata 单机的`file`模式启动 Seata Server。
 
 #### 启动 Seata Server
 
@@ -149,13 +153,15 @@ sh bin/mqbroker
 
 在本 demo 示例中，为了便于演示，每件商品的单价都为2。
 
-而在前面的准备工作中，**初始化业务数据库表**的时候应用新建了一个用户，用户userId 为 admin，余额为 3 元；同时新建了一个编号为 1 号的商品，库存为 100 件。
+而在前面的准备工作中，**初始化业务数据库表**的时候应用新建了一个用户，用户userId 为 admin，余额为 3 元；同时新建了一个编号为
+1 号的商品，库存为 100 件。
 
 因此通过上述的操作，应用会创建一个订单，扣减对应商品编号为 1 号的库存个数（100-1=99），扣减 admin 用户的余额（3-2=1）。
 
 ![](https://my-img-1.oss-cn-hangzhou.aliyuncs.com/image-20221016155429801.png)
 
-如果再次请求相同的接口，同样是先扣减库存（99-1=98），但是会因为 admin 用户余额不足而抛出异常，并被 Seata 捕获，执行分布式事务二阶段提交，回滚事务。
+如果再次请求相同的接口，同样是先扣减库存（99-1=98），但是会因为 admin 用户余额不足而抛出异常，并被 Seata
+捕获，执行分布式事务二阶段提交，回滚事务。
 
 ![](https://my-img-1.oss-cn-hangzhou.aliyuncs.com/image-20221016155436112.png)
 
@@ -190,8 +196,10 @@ sh bin/mqbroker
 
 访问 `http://integrated-frontend:8080/rocketmq` 体验对应场景。
 
-由于之前在 Nacos 中配置了 `integrated-praise-consumer` 消费者模块的消费速率以及间隔，在点击按钮时应用模拟 1000 个点赞请求，针对 1000 个点赞请求，`integrated-praise-provider`
-会将 1000 次请求都向 Broker 投递消息，而在消费者模块中会根据配置的消费速率进行消费，向数据库更新点赞的商品数据，模拟大流量下 RocketMQ 削峰填谷的特性。
+由于之前在 Nacos 中配置了 `integrated-praise-consumer` 消费者模块的消费速率以及间隔，在点击按钮时应用模拟 1000 个点赞请求，针对
+1000 个点赞请求，`integrated-praise-provider`
+会将 1000 次请求都向 Broker 投递消息，而在消费者模块中会根据配置的消费速率进行消费，向数据库更新点赞的商品数据，模拟大流量下
+RocketMQ 削峰填谷的特性。
 
 可以看到数据库中点赞的个数正在动态更新。
 
@@ -204,8 +212,8 @@ sh bin/mqbroker
 当然各个组件的功能特性不仅仅只包含最佳实践中演示的这些，如果您感兴趣或是想要深入了解，欢迎学习各个组件的独立 example 相关文档。
 
 - Nacos examples
-  - [Nacos config example](../../../nacos-example/nacos-config-example/readme-zh.md)
-  - [Nacos discovery example](../../../nacos-example/nacos-discovery-example/readme-zh.md)
+    - [Nacos config example](../../../nacos-example/nacos-config-example/readme-zh.md)
+    - [Nacos discovery example](../../../nacos-example/nacos-discovery-example/readme-zh.md)
 - [Sentinel core example](../../../sentinel-example/sentinel-core-example/readme-zh.md)
 - [Seata example](../../../seata-example/readme-zh.md)
 - [RocketMQ example](../../../rocketmq-example/readme-zh.md)

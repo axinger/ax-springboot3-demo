@@ -18,7 +18,6 @@ package com.alibaba.cloud.examples.rocketmq;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -42,60 +41,59 @@ import org.springframework.web.bind.annotation.RestController;
 @RemoteApplicationEventScan(basePackages = "com.alibaba.cloud.examples.rocketmq")
 public class RocketMQBusApplication {
 
-	public static void main(String[] args) {
-		new SpringApplicationBuilder(RocketMQBusApplication.class)
-				.properties("server.port=0") // Random server port
-				.properties("management.endpoints.web.exposure.include=*") // exposure
-																			// includes
-																			// all
-				.properties("spring.cloud.bus.trace.enabled=true") // Enable trace
-				.run(args);
-	}
+    @Autowired
+    private ApplicationEventPublisher publisher;
+    @Value("${spring.cloud.bus.id}")
+    private String originService;
+    @Value("${server.port}")
+    private int localServerPort;
+    @Autowired
+    private ObjectMapper objectMapper;
 
-	@Autowired
-	private ApplicationEventPublisher publisher;
+    public static void main(String[] args) {
+        new SpringApplicationBuilder(RocketMQBusApplication.class)
+                .properties("server.port=0") // Random server port
+                .properties("management.endpoints.web.exposure.include=*") // exposure
+                // includes
+                // all
+                .properties("spring.cloud.bus.trace.enabled=true") // Enable trace
+                .run(args);
+    }
 
-	@Value("${spring.cloud.bus.id}")
-	private String originService;
+    /**
+     * Publish the {@link UserRemoteApplicationEvent}.
+     *
+     * @param name        the user name
+     * @param destination the destination
+     * @return If published
+     */
+    @GetMapping("/bus/event/publish/user")
+    public boolean publish(@RequestParam String name,
+                           @RequestParam(required = false) String destination) {
+        User user = new User();
+        user.setId(System.currentTimeMillis());
+        user.setName(name);
+        publisher.publishEvent(
+                new UserRemoteApplicationEvent(this, user, originService, destination));
+        return true;
+    }
 
-	@Value("${server.port}")
-	private int localServerPort;
+    /**
+     * Listener on the {@link UserRemoteApplicationEvent}.
+     *
+     * @param event {@link UserRemoteApplicationEvent}
+     */
+    @EventListener
+    public void onEvent(UserRemoteApplicationEvent event) {
+        System.out.printf("Server [port : %d] listeners on %s\n", localServerPort,
+                event.getUser());
+    }
 
-	@Autowired
-	private ObjectMapper objectMapper;
-
-	/**
-	 * Publish the {@link UserRemoteApplicationEvent}.
-	 * @param name the user name
-	 * @param destination the destination
-	 * @return If published
-	 */
-	@GetMapping("/bus/event/publish/user")
-	public boolean publish(@RequestParam String name,
-			@RequestParam(required = false) String destination) {
-		User user = new User();
-		user.setId(System.currentTimeMillis());
-		user.setName(name);
-		publisher.publishEvent(
-				new UserRemoteApplicationEvent(this, user, originService, destination));
-		return true;
-	}
-
-	/**
-	 * Listener on the {@link UserRemoteApplicationEvent}.
-	 * @param event {@link UserRemoteApplicationEvent}
-	 */
-	@EventListener
-	public void onEvent(UserRemoteApplicationEvent event) {
-		System.out.printf("Server [port : %d] listeners on %s\n", localServerPort,
-				event.getUser());
-	}
-
-	@EventListener
-	public void onAckEvent(AckRemoteApplicationEvent event)
-			throws JsonProcessingException {
-		System.out.printf("Server [port : %d] listeners on %s\n", localServerPort,
-				objectMapper.writeValueAsString(event));
-	}
+    @EventListener
+    public void onAckEvent(AckRemoteApplicationEvent event)
+            throws JsonProcessingException {
+        System.out.printf("Server [port : %d] listeners on %s\n", localServerPort,
+                objectMapper.writeValueAsString(event));
+    }
 
 }

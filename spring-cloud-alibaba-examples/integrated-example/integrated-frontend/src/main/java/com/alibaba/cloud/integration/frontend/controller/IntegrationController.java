@@ -26,19 +26,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class IntegrationController {
 
-	@RequestMapping("/order")
-	public String order() {
-		return "order";
-	}
+    @RequestMapping("/order")
+    public String order() {
+        return "order";
+    }
 
-	@RequestMapping("/rocketmq")
-	public String rocketmq() {
-		return "rocketmq";
-	}
+    @RequestMapping("/rocketmq")
+    public String rocketmq() {
+        return "rocketmq";
+    }
 
-	@RequestMapping("/sentinel")
-	public String sentinel() {
-		return "sentinel";
-	}
+    @RequestMapping("/sentinel")
+    public String sentinel() {
+        return "sentinel";
+    }
 
 }

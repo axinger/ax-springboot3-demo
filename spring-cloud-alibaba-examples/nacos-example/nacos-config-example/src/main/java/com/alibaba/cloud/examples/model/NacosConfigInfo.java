@@ -26,55 +26,55 @@ import org.springframework.stereotype.Component;
 @Component
 public class NacosConfigInfo {
 
-	/**
-	 * Nacos server address.
-	 */
-	private String serverAddr;
+    /**
+     * Nacos server address.
+     */
+    private String serverAddr;
 
-	/**
-	 * Data Id prefix.
-	 */
-	private String prefix;
+    /**
+     * Data Id prefix.
+     */
+    private String prefix;
 
-	/**
-	 * Nacos group.
-	 */
-	private String group;
+    /**
+     * Nacos group.
+     */
+    private String group;
 
-	/**
-	 * Nacos namespace.
-	 */
-	private String namespace;
+    /**
+     * Nacos namespace.
+     */
+    private String namespace;
 
-	public String getServerAddr() {
-		return serverAddr;
-	}
+    public String getServerAddr() {
+        return serverAddr;
+    }
 
-	public void setServerAddr(String serverAddr) {
-		this.serverAddr = serverAddr;
-	}
+    public void setServerAddr(String serverAddr) {
+        this.serverAddr = serverAddr;
+    }
 
-	public String getPrefix() {
-		return prefix;
-	}
+    public String getPrefix() {
+        return prefix;
+    }
 
-	public void setPrefix(String prefix) {
-		this.prefix = prefix;
-	}
+    public void setPrefix(String prefix) {
+        this.prefix = prefix;
+    }
 
-	public String getGroup() {
-		return group;
-	}
+    public String getGroup() {
+        return group;
+    }
 
-	public void setGroup(String group) {
-		this.group = group;
-	}
+    public void setGroup(String group) {
+        this.group = group;
+    }
 
-	public String getNamespace() {
-		return namespace;
-	}
+    public String getNamespace() {
+        return namespace;
+    }
 
-	public void setNamespace(String namespace) {
-		this.namespace = namespace;
-	}
+    public void setNamespace(String namespace) {
+        this.namespace = namespace;
+    }
 }

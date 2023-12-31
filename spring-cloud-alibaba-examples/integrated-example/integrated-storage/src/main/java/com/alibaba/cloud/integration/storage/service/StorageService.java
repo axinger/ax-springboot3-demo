@@ -24,8 +24,8 @@ import com.alibaba.cloud.integration.common.Result;
  */
 public interface StorageService {
 
-	void reduceStock(String commodityCode, Integer orderCount) throws BusinessException;
+    void reduceStock(String commodityCode, Integer orderCount) throws BusinessException;
 
-	Result<?> getRemainCount(String commodityCode);
+    Result<?> getRemainCount(String commodityCode);
 
 }

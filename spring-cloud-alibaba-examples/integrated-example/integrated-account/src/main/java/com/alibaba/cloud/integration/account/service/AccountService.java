@@ -24,8 +24,8 @@ import com.alibaba.cloud.integration.common.Result;
  */
 public interface AccountService {
 
-	void reduceBalance(String userId, Integer price) throws BusinessException;
+    void reduceBalance(String userId, Integer price) throws BusinessException;
 
-	Result<?> getRemainAccount(String userId);
+    Result<?> getRemainAccount(String userId);
 
 }

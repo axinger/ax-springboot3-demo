@@ -24,24 +24,24 @@ package com.alibaba.cloud.examples.configuration;
  */
 public class HttpbinClientFallback implements HttpbinClient {
 
-	@Override
-	public String delay() {
-		return "delay degrade by sentinel";
-	}
+    private Throwable throwable;
 
-	@Override
-	public String status500() {
-		return "500 degrade by sentinel";
-	}
+    HttpbinClientFallback(Throwable throwable) {
+        this.throwable = throwable;
+    }
 
-	@Override
-	public String get() {
-		return "get degrade by sentinel";
-	}
+    @Override
+    public String delay() {
+        return "delay degrade by sentinel";
+    }
 
-	private Throwable throwable;
+    @Override
+    public String status500() {
+        return "500 degrade by sentinel";
+    }
 
-	HttpbinClientFallback(Throwable throwable) {
-		this.throwable = throwable;
-	}
+    @Override
+    public String get() {
+        return "get degrade by sentinel";
+    }
 }

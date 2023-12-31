@@ -22,37 +22,37 @@ import java.util.Map;
  * @author freeman
  */
 public class User {
-	private String id;
-	private String name;
-	private Map<String, Object> meta;
+    private String id;
+    private String name;
+    private Map<String, Object> meta;
 
-	public String getId() {
-		return id;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public Map<String, Object> getMeta() {
-		return meta;
-	}
+    public Map<String, Object> getMeta() {
+        return meta;
+    }
 
-	public void setMeta(Map<String, Object> meta) {
-		this.meta = meta;
-	}
+    public void setMeta(Map<String, Object> meta) {
+        this.meta = meta;
+    }
 
-	@Override
-	public String toString() {
-		return "User{" + "id='" + id + '\'' + ", name='" + name + '\'' + ", meta=" + meta
-				+ '}';
-	}
+    @Override
+    public String toString() {
+        return "User{" + "id='" + id + '\'' + ", name='" + name + '\'' + ", meta=" + meta
+                + '}';
+    }
 }

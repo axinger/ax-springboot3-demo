@@ -37,38 +37,38 @@ import org.springframework.web.client.RestTemplate;
 @EnableFeignClients
 @EnableDiscoveryClient(autoRegister = false)
 @LoadBalancerClients({
-		@LoadBalancerClient("storage-service"),
-		@LoadBalancerClient("order-service"),
-		@LoadBalancerClient("service-provider")
+        @LoadBalancerClient("storage-service"),
+        @LoadBalancerClient("order-service"),
+        @LoadBalancerClient("service-provider")
 })
 public class BusinessApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(BusinessApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(BusinessApplication.class, args);
+    }
 
-	@Bean
-	public RestTemplate restTemplate() {
-		return new RestTemplate();
-	}
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
+    }
 
-	@FeignClient("storage-service")
-	public interface StorageService {
+    @FeignClient("storage-service")
+    public interface StorageService {
 
-		@GetMapping(path = "/storage/{commodityCode}/{count}")
-		String storage(@PathVariable("commodityCode") String commodityCode,
-				@PathVariable("count") int count);
+        @GetMapping(path = "/storage/{commodityCode}/{count}")
+        String storage(@PathVariable("commodityCode") String commodityCode,
+                       @PathVariable("count") int count);
 
-	}
+    }
 
-	@FeignClient("order-service")
-	public interface OrderService {
+    @FeignClient("order-service")
+    public interface OrderService {
 
-		@PostMapping(path = "/order")
-		String order(@RequestParam("userId") String userId,
-				@RequestParam("commodityCode") String commodityCode,
-				@RequestParam("orderCount") int orderCount);
+        @PostMapping(path = "/order")
+        String order(@RequestParam("userId") String userId,
+                     @RequestParam("commodityCode") String commodityCode,
+                     @RequestParam("orderCount") int orderCount);
 
-	}
+    }
 
 }

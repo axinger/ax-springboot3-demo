@@ -18,16 +18,18 @@ package com.alibaba.cloud.integration.common;
 
 public interface IResult {
 
-	/**
-	 * Get result code.
-	 * @return result code
-	 */
-	Integer getCode();
+    /**
+     * Get result code.
+     *
+     * @return result code
+     */
+    Integer getCode();
 
-	/**
-	 * Get result message.
-	 * @return result message
-	 */
-	String getMessage();
+    /**
+     * Get result message.
+     *
+     * @return result message
+     */
+    String getMessage();
 
 }

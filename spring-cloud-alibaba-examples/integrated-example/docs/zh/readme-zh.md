@@ -2,7 +2,8 @@
 
 ## 项目说明
 
-本项目为 Spring Cloud Alibaba （后文简称为 SCA）容器化部署最佳实践的 Demo 演示项目，是整合了 SCA 相关组件(Nacos, Sentinel, Seata, RocketMQ)的 Example 示例项目。
+本项目为 Spring Cloud Alibaba （后文简称为 SCA）容器化部署最佳实践的 Demo 演示项目，是整合了 SCA 相关组件(Nacos, Sentinel,
+Seata, RocketMQ)的 Example 示例项目。
 
 主要使用的组件及及其使用特性如下：
 
@@ -12,7 +13,7 @@
 - Seata 分布式事务
 - RocketMQ 消息队列削峰填谷
 - Docker 微服务容器化部署
-- Kubernetes Helm Chart 
+- Kubernetes Helm Chart
 
 ![整体概览](https://my-img-1.oss-cn-hangzhou.aliyuncs.com/image-20220816004541921.png)
 
@@ -36,10 +37,9 @@
 
 2) 用户为商品进行点赞的场景，模拟大流量环境下通过 Sentinel 进行限流或是 RocketMQ 进行削峰填谷。在此场景下，SCA社区提供了两种应对大流量的处理方式：
 
-   - Sentinel 在网关侧绑定指定网关路由进行服务的熔断降级。
+    - Sentinel 在网关侧绑定指定网关路由进行服务的熔断降级。
 
-   - RocketMQ 进行流量削峰填谷，在大流量请求下，生产者向 RocketMQ 发送消息，而消费者则通过可配置的消费速率进行拉取消费，减少大流量直接请求数据库增加点赞请求的压力。
-
+    - RocketMQ 进行流量削峰填谷，在大流量请求下，生产者向 RocketMQ 发送消息，而消费者则通过可配置的消费速率进行拉取消费，减少大流量直接请求数据库增加点赞请求的压力。
 
 #### Spring Cloud Gateway
 
@@ -54,11 +54,11 @@ Spring Cloud GateWay 整合 Nacos,实现动态路由配置。
 各个微服务的配置中心，服务注册中心。
 
 - 配置中心
-  - 共享配置：MySQL 数据源相关信息配置。
+    - 共享配置：MySQL 数据源相关信息配置。
 
 - 注册中心
-  - 所有的微服务模块都注册到 Nacos 中进行服务注册与发现。
-  - 整合 Spring Cloud Gateway 网关。
+    - 所有的微服务模块都注册到 Nacos 中进行服务注册与发现。
+    - 整合 Spring Cloud Gateway 网关。
 
 #### Seata
 
@@ -76,14 +76,18 @@ Spring Cloud GateWay 整合 Nacos,实现动态路由配置。
 
 用于进行点赞服务流量的削峰填谷。
 
-通过将大流量的点赞请求从生产者发送到 mq，消费者模块从 mq 中拉取进行一定频率的消费，不是简单的直接服务熔断限流降级，实现 RocketMQ 针对大流量的削峰填谷能力。
+通过将大流量的点赞请求从生产者发送到 mq，消费者模块从 mq 中拉取进行一定频率的消费，不是简单的直接服务熔断限流降级，实现
+RocketMQ 针对大流量的削峰填谷能力。
 
 ## 版本说明
 
-本项目提供了[本地部署运行版本](local-deployment-zh.md)、[docker-compose 版本](docker-compose-deployment-zh.md)以及 [Kubernetes Helm-Chart 版本](kubernetes-deployment-zh.md)。
+本项目提供了[本地部署运行版本](local-deployment-zh.md)、[docker-compose 版本](docker-compose-deployment-zh.md)
+以及 [Kubernetes Helm-Chart 版本](kubernetes-deployment-zh.md)。
 
 - 如果想要了解具体如何配置各项组件以及完整环境搭建，推荐学习[本地部署运行版本](local-deployment-zh.md)。
 
-- 如果只想运行示例代码，避免繁琐的本地环境搭建过程，又不想使用 k8s 集群。您可以尝试使用 [docker-compose 版本](docker-compose-deployment-zh.md)。
+- 如果只想运行示例代码，避免繁琐的本地环境搭建过程，又不想使用 k8s
+  集群。您可以尝试使用 [docker-compose 版本](docker-compose-deployment-zh.md)。
 
-- 如果想要在 K8S 集群上快速体验组件效果，跳过各个组件环境部署等过程，请查看 [Kubernetes Helm-Chart 版本](kubernetes-deployment-zh.md)。
+- 如果想要在 K8S
+  集群上快速体验组件效果，跳过各个组件环境部署等过程，请查看 [Kubernetes Helm-Chart 版本](kubernetes-deployment-zh.md)。

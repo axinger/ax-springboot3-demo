@@ -23,12 +23,12 @@ import org.springframework.cloud.loadbalancer.annotation.LoadBalancerClients;
 
 @SpringBootApplication
 @LoadBalancerClients({
-		@LoadBalancerClient("node-service")
+        @LoadBalancerClient("node-service")
 })
 public class DemoApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(DemoApplication.class, args);
+    }
 
 }

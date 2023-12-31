@@ -16,12 +16,6 @@
 
 package com.alibaba.cloud.integration.gateway.config;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-
 import com.alibaba.csp.sentinel.adapter.gateway.common.rule.GatewayFlowRule;
 import com.alibaba.csp.sentinel.adapter.gateway.common.rule.GatewayRuleManager;
 import com.alibaba.csp.sentinel.adapter.gateway.sc.SentinelGatewayFilter;
@@ -29,8 +23,6 @@ import com.alibaba.csp.sentinel.adapter.gateway.sc.callback.BlockRequestHandler;
 import com.alibaba.csp.sentinel.adapter.gateway.sc.callback.GatewayCallbackManager;
 import com.alibaba.csp.sentinel.adapter.gateway.sc.exception.SentinelGatewayBlockExceptionHandler;
 import jakarta.annotation.PostConstruct;
-import reactor.core.publisher.Mono;
-
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.context.annotation.Bean;
@@ -47,6 +39,12 @@ import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import org.springframework.web.reactive.result.view.ViewResolver;
 import org.springframework.web.server.ServerWebExchange;
+import reactor.core.publisher.Mono;
+
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * @author TrevorLink
@@ -54,63 +52,63 @@ import org.springframework.web.server.ServerWebExchange;
 @Configuration
 public class GatewayConfig {
 
-	private final List<ViewResolver> viewResolvers;
+    private final List<ViewResolver> viewResolvers;
 
-	private final ServerCodecConfigurer serverCodecConfigurer;
+    private final ServerCodecConfigurer serverCodecConfigurer;
 
-	public GatewayConfig(ObjectProvider<List<ViewResolver>> viewResolversProvider,
-			ServerCodecConfigurer serverCodecConfigurer) {
-		this.viewResolvers = viewResolversProvider.getIfAvailable(Collections::emptyList);
-		this.serverCodecConfigurer = serverCodecConfigurer;
-	}
+    public GatewayConfig(ObjectProvider<List<ViewResolver>> viewResolversProvider,
+                         ServerCodecConfigurer serverCodecConfigurer) {
+        this.viewResolvers = viewResolversProvider.getIfAvailable(Collections::emptyList);
+        this.serverCodecConfigurer = serverCodecConfigurer;
+    }
 
-	@Bean
-	@Order(Ordered.HIGHEST_PRECEDENCE)
-	public GlobalFilter sentinelGatewayFilter() {
-		return new SentinelGatewayFilter();
-	}
+    @Bean
+    @Order(Ordered.HIGHEST_PRECEDENCE)
+    public GlobalFilter sentinelGatewayFilter() {
+        return new SentinelGatewayFilter();
+    }
 
-	@PostConstruct
-	public void initGatewayRules() {
-		Set<GatewayFlowRule> rules = new HashSet<>();
-		rules.add(
-				new GatewayFlowRule("praiseItemSentinel").setCount(5).setIntervalSec(1));
-		GatewayRuleManager.loadRules(rules);
-	}
+    @PostConstruct
+    public void initGatewayRules() {
+        Set<GatewayFlowRule> rules = new HashSet<>();
+        rules.add(
+                new GatewayFlowRule("praiseItemSentinel").setCount(5).setIntervalSec(1));
+        GatewayRuleManager.loadRules(rules);
+    }
 
-	@Bean
-	@Order(Ordered.HIGHEST_PRECEDENCE)
-	public SentinelGatewayBlockExceptionHandler sentinelGatewayBlockExceptionHandler() {
-		// Register the block exception handler for Spring Cloud Gateway.
-		return new SentinelGatewayBlockExceptionHandler(viewResolvers,
-				serverCodecConfigurer);
-	}
+    @Bean
+    @Order(Ordered.HIGHEST_PRECEDENCE)
+    public SentinelGatewayBlockExceptionHandler sentinelGatewayBlockExceptionHandler() {
+        // Register the block exception handler for Spring Cloud Gateway.
+        return new SentinelGatewayBlockExceptionHandler(viewResolvers,
+                serverCodecConfigurer);
+    }
 
-	@PostConstruct
-	public void initBlockHandlers() {
-		BlockRequestHandler blockRequestHandler = new BlockRequestHandler() {
-			@Override
-			public Mono<ServerResponse> handleRequest(ServerWebExchange serverWebExchange,
-					Throwable throwable) {
-				return ServerResponse.status(HttpStatus.OK)
-						.contentType(MediaType.APPLICATION_JSON_UTF8)
-						.body(BodyInserters.fromObject("此接口被限流了"));
-			}
-		};
-		GatewayCallbackManager.setBlockHandler(blockRequestHandler);
-	}
+    @PostConstruct
+    public void initBlockHandlers() {
+        BlockRequestHandler blockRequestHandler = new BlockRequestHandler() {
+            @Override
+            public Mono<ServerResponse> handleRequest(ServerWebExchange serverWebExchange,
+                                                      Throwable throwable) {
+                return ServerResponse.status(HttpStatus.OK)
+                        .contentType(MediaType.APPLICATION_JSON_UTF8)
+                        .body(BodyInserters.fromObject("此接口被限流了"));
+            }
+        };
+        GatewayCallbackManager.setBlockHandler(blockRequestHandler);
+    }
 
-	@Bean
-	public CorsWebFilter corsFilter() {
-		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-		CorsConfiguration config = new CorsConfiguration();
-		config.setAllowCredentials(true);
-		config.addAllowedHeader("*");
-		config.addAllowedMethod("*");
-		config.addAllowedOriginPattern("*");
-		source.registerCorsConfiguration("/**", config);
+    @Bean
+    public CorsWebFilter corsFilter() {
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        CorsConfiguration config = new CorsConfiguration();
+        config.setAllowCredentials(true);
+        config.addAllowedHeader("*");
+        config.addAllowedMethod("*");
+        config.addAllowedOriginPattern("*");
+        source.registerCorsConfiguration("/**", config);
 
-		return new CorsWebFilter(source);
-	}
+        return new CorsWebFilter(source);
+    }
 
 }

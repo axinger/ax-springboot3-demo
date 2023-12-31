@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
     <title></title>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
 </head>
@@ -49,6 +49,7 @@
             });
         }
         timeoutid = setTimeout(queryRes, 1000);
+
         function queryRes() {
             $.ajax({
                 url: "http://gateway-service:30010/praise/query",

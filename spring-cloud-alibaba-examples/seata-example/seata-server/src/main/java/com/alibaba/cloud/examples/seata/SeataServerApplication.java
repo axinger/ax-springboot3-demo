@@ -22,11 +22,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * @author <a href="mailto:zhangqian9158@gmail.com">ZHANGQIAN</a>
  */
-@SpringBootApplication(scanBasePackages = { "io.seata" })
+@SpringBootApplication(scanBasePackages = {"io.seata"})
 public class SeataServerApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(io.seata.server.ServerApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(io.seata.server.ServerApplication.class, args);
+    }
 
 }

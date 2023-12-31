@@ -27,12 +27,12 @@ import org.springframework.cloud.loadbalancer.annotation.LoadBalancerClients;
 
 @SpringBootApplication
 @LoadBalancerClients({
-		@LoadBalancerClient("service-provider")
+        @LoadBalancerClient("service-provider")
 })
 public class ConsumerReactiveApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ConsumerReactiveApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(ConsumerReactiveApplication.class, args);
+    }
 
 }

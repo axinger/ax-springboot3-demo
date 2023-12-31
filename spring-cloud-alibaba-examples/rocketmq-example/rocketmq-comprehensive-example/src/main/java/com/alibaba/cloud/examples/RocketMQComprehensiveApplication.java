@@ -16,60 +16,59 @@
 
 package com.alibaba.cloud.examples;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.integration.support.StringObjectMapBuilder;
+import reactor.core.publisher.Flux;
+
 import java.time.Duration;
 import java.util.Arrays;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import reactor.core.publisher.Flux;
-
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import org.springframework.integration.support.StringObjectMapBuilder;
-
 /**
  * @author freeman
  */
 @SpringBootApplication
 public class RocketMQComprehensiveApplication {
-	private static final Logger log = LoggerFactory
-			.getLogger(RocketMQComprehensiveApplication.class);
+    private static final Logger log = LoggerFactory
+            .getLogger(RocketMQComprehensiveApplication.class);
 
-	public static void main(String[] args) {
-		SpringApplication.run(RocketMQComprehensiveApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(RocketMQComprehensiveApplication.class, args);
+    }
 
-	@Bean
-	public Supplier<Flux<User>> producer() {
-		return () -> Flux.interval(Duration.ofSeconds(2)).map(id -> {
-			User user = new User();
-			user.setId(id.toString());
-			user.setName("freeman");
-			user.setMeta(new StringObjectMapBuilder()
-					.put("hobbies", Arrays.asList("movies", "songs")).put("age", 21)
-					.get());
-			return user;
-		}).log();
-	}
+    @Bean
+    public Supplier<Flux<User>> producer() {
+        return () -> Flux.interval(Duration.ofSeconds(2)).map(id -> {
+            User user = new User();
+            user.setId(id.toString());
+            user.setName("freeman");
+            user.setMeta(new StringObjectMapBuilder()
+                    .put("hobbies", Arrays.asList("movies", "songs")).put("age", 21)
+                    .get());
+            return user;
+        }).log();
+    }
 
-	@Bean
-	public Function<Flux<User>, Flux<User>> processor() {
-		return flux -> flux.map(user -> {
-			user.setId(String.valueOf(
-					Long.parseLong(user.getId()) * Long.parseLong(user.getId())));
-			user.setName("not freeman");
-			user.getMeta().put("hobbies", Arrays.asList("programming"));
-			return user;
-		});
-	}
+    @Bean
+    public Function<Flux<User>, Flux<User>> processor() {
+        return flux -> flux.map(user -> {
+            user.setId(String.valueOf(
+                    Long.parseLong(user.getId()) * Long.parseLong(user.getId())));
+            user.setName("not freeman");
+            user.getMeta().put("hobbies", Arrays.asList("programming"));
+            return user;
+        });
+    }
 
-	@Bean
-	public Consumer<User> consumer() {
-		return num -> log.info(num.toString());
-	}
+    @Bean
+    public Consumer<User> consumer() {
+        return num -> log.info(num.toString());
+    }
 
 }

@@ -27,8 +27,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableFeignClients
 public class FeignCircuitBreakerApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(FeignCircuitBreakerApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(FeignCircuitBreakerApplication.class, args);
+    }
 
 }

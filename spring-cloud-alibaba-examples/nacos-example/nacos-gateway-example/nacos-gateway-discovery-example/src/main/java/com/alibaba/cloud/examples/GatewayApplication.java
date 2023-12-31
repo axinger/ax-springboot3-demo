@@ -28,12 +28,12 @@ import org.springframework.cloud.loadbalancer.annotation.LoadBalancerClients;
 @SpringBootApplication
 @EnableDiscoveryClient
 @LoadBalancerClients({
-		@LoadBalancerClient("service-gateway-provider")
+        @LoadBalancerClient("service-gateway-provider")
 })
 public class GatewayApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(GatewayApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(GatewayApplication.class, args);
+    }
 
 }

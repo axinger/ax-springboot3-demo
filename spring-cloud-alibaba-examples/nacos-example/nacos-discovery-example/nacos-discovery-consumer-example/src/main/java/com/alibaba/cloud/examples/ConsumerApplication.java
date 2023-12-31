@@ -30,13 +30,13 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableDiscoveryClient
 @EnableFeignClients
 @LoadBalancerClients({
-		@LoadBalancerClient("service-provider")
+        @LoadBalancerClient("service-provider")
 })
 public class ConsumerApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ConsumerApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(ConsumerApplication.class, args);
+    }
 
 }
 

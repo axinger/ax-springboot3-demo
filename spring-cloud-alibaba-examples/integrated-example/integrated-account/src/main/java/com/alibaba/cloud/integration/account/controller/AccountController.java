@@ -20,13 +20,8 @@ import com.alibaba.cloud.integration.account.dto.AccountDTO;
 import com.alibaba.cloud.integration.account.service.AccountService;
 import com.alibaba.cloud.integration.common.BusinessException;
 import com.alibaba.cloud.integration.common.Result;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author TrevorLink
@@ -35,23 +30,22 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/account")
 public class AccountController {
 
-	@Autowired
-	private AccountService accountService;
+    @Autowired
+    private AccountService accountService;
 
-	@PostMapping("/reduce-balance")
-	public Result<?> reduceBalance(@RequestBody AccountDTO accountDTO) {
-		try {
-			accountService.reduceBalance(accountDTO.getUserId(), accountDTO.getPrice());
-		}
-		catch (BusinessException e) {
-			return Result.failed(e.getMessage());
-		}
-		return Result.success("");
-	}
+    @PostMapping("/reduce-balance")
+    public Result<?> reduceBalance(@RequestBody AccountDTO accountDTO) {
+        try {
+            accountService.reduceBalance(accountDTO.getUserId(), accountDTO.getPrice());
+        } catch (BusinessException e) {
+            return Result.failed(e.getMessage());
+        }
+        return Result.success("");
+    }
 
-	@GetMapping("/")
-	public Result<?> getRemainAccount(String userId) {
-		return accountService.getRemainAccount(userId);
-	}
+    @GetMapping("/")
+    public Result<?> getRemainAccount(String userId) {
+        return accountService.getRemainAccount(userId);
+    }
 
 }

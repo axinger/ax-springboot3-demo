@@ -20,7 +20,6 @@ import org.apache.rocketmq.client.producer.LocalTransactionState;
 import org.apache.rocketmq.client.producer.TransactionListener;
 import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.common.message.MessageExt;
-
 import org.springframework.stereotype.Component;
 
 /**
@@ -29,37 +28,38 @@ import org.springframework.stereotype.Component;
 @Component("myTransactionListener")
 public class TransactionListenerImpl implements TransactionListener {
 
-	/**
-	 * Execute local transaction.
-	 * @param msg messages
-	 * @param arg message args
-	 * @return Transaction state
-	 */
-	@Override
-	public LocalTransactionState executeLocalTransaction(Message msg, Object arg) {
-		Object num = msg.getProperty("test");
+    /**
+     * Execute local transaction.
+     *
+     * @param msg messages
+     * @param arg message args
+     * @return Transaction state
+     */
+    @Override
+    public LocalTransactionState executeLocalTransaction(Message msg, Object arg) {
+        Object num = msg.getProperty("test");
 
-		if ("1".equals(num)) {
-			System.out.println("executer: " + new String(msg.getBody()) + " unknown");
-			return LocalTransactionState.UNKNOW;
-		}
-		else if ("2".equals(num)) {
-			System.out.println("executer: " + new String(msg.getBody()) + " rollback");
-			return LocalTransactionState.ROLLBACK_MESSAGE;
-		}
-		System.out.println("executer: " + new String(msg.getBody()) + " commit");
-		return LocalTransactionState.COMMIT_MESSAGE;
-	}
+        if ("1".equals(num)) {
+            System.out.println("executer: " + new String(msg.getBody()) + " unknown");
+            return LocalTransactionState.UNKNOW;
+        } else if ("2".equals(num)) {
+            System.out.println("executer: " + new String(msg.getBody()) + " rollback");
+            return LocalTransactionState.ROLLBACK_MESSAGE;
+        }
+        System.out.println("executer: " + new String(msg.getBody()) + " commit");
+        return LocalTransactionState.COMMIT_MESSAGE;
+    }
 
-	/**
-	 * MQ check back local transaction states.
-	 * @param msg messages
-	 * @return Transaction state
-	 */
-	@Override
-	public LocalTransactionState checkLocalTransaction(MessageExt msg) {
-		System.out.println("check: " + new String(msg.getBody()));
-		return LocalTransactionState.COMMIT_MESSAGE;
-	}
+    /**
+     * MQ check back local transaction states.
+     *
+     * @param msg messages
+     * @return Transaction state
+     */
+    @Override
+    public LocalTransactionState checkLocalTransaction(MessageExt msg) {
+        System.out.println("check: " + new String(msg.getBody()));
+        return LocalTransactionState.COMMIT_MESSAGE;
+    }
 
 }

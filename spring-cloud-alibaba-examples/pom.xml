@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <parent>
@@ -51,8 +51,8 @@
         <module>integrated-example/integrated-praise-provider</module>
         <module>integrated-example/integrated-praise-consumer</module>
         <module>integrated-example/integrated-common</module>
-		<module>integrated-example/integrated-frontend</module>
-	</modules>
+        <module>integrated-example/integrated-frontend</module>
+    </modules>
 
 
     <build>
@@ -65,11 +65,11 @@
                     <skip>true</skip>
                 </configuration>
             </plugin>
-<!--            <plugin>-->
-<!--                <groupId>org.graalvm.buildtools</groupId>-->
-<!--                <artifactId>native-maven-plugin</artifactId>-->
-<!--                <version>${native-maven-plugin.version}</version>-->
-<!--            </plugin>-->
+            <!--            <plugin>-->
+            <!--                <groupId>org.graalvm.buildtools</groupId>-->
+            <!--                <artifactId>native-maven-plugin</artifactId>-->
+            <!--                <version>${native-maven-plugin.version}</version>-->
+            <!--            </plugin>-->
 
             <!--Exclude javadoc jars-->
             <plugin>
@@ -131,12 +131,12 @@
                                 <requiredVersion>22.3</requiredVersion>
                             </configuration>
                             <executions>
-<!--                                <execution>-->
-<!--                                    <id>add-reachability-metadata</id>-->
-<!--                                    <goals>-->
-<!--                                        <goal>add-reachability-metadata</goal>-->
-<!--                                    </goals>-->
-<!--                                </execution>-->
+                                <!--                                <execution>-->
+                                <!--                                    <id>add-reachability-metadata</id>-->
+                                <!--                                    <goals>-->
+                                <!--                                        <goal>add-reachability-metadata</goal>-->
+                                <!--                                    </goals>-->
+                                <!--                                </execution>-->
                             </executions>
                         </plugin>
                     </plugins>

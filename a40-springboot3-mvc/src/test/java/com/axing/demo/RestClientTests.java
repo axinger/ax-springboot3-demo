@@ -3,9 +3,9 @@ package com.axing.demo;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.web.client.RestClient;
-import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.Map;
+
 @SpringBootTest
 public class RestClientTests {
 

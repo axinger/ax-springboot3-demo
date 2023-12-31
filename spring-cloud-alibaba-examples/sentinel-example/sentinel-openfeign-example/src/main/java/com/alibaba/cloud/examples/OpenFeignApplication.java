@@ -30,8 +30,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableDiscoveryClient
 public class OpenFeignApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(OpenFeignApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(OpenFeignApplication.class, args);
+    }
 
 }

@@ -21,24 +21,24 @@ package com.alibaba.cloud.integration.order.feign.dto;
  */
 public class AccountDTO {
 
-	private String userId;
+    private String userId;
 
-	private Integer price;
+    private Integer price;
 
-	public String getUserId() {
-		return userId;
-	}
+    public String getUserId() {
+        return userId;
+    }
 
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
-	public Integer getPrice() {
-		return price;
-	}
+    public Integer getPrice() {
+        return price;
+    }
 
-	public void setPrice(Integer price) {
-		this.price = price;
-	}
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
 
 }

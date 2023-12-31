@@ -20,13 +20,8 @@ import com.alibaba.cloud.integration.common.BusinessException;
 import com.alibaba.cloud.integration.common.Result;
 import com.alibaba.cloud.integration.storage.dto.StorageDTO;
 import com.alibaba.cloud.integration.storage.service.StorageService;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author TrevorLink
@@ -35,24 +30,23 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/storage")
 public class StorageController {
 
-	@Autowired
-	private StorageService storageService;
+    @Autowired
+    private StorageService storageService;
 
-	@PostMapping("/reduce-stock")
-	public Result<?> reduceStock(@RequestBody StorageDTO storageDTO) {
-		try {
-			storageService.reduceStock(storageDTO.getCommodityCode(),
-					storageDTO.getCount());
-		}
-		catch (BusinessException e) {
-			return Result.failed(e.getMessage());
-		}
-		return Result.success("");
-	}
+    @PostMapping("/reduce-stock")
+    public Result<?> reduceStock(@RequestBody StorageDTO storageDTO) {
+        try {
+            storageService.reduceStock(storageDTO.getCommodityCode(),
+                    storageDTO.getCount());
+        } catch (BusinessException e) {
+            return Result.failed(e.getMessage());
+        }
+        return Result.success("");
+    }
 
-	@GetMapping("/")
-	public Result<?> getRemainCount(String commodityCode) {
-		return storageService.getRemainCount(commodityCode);
-	}
+    @GetMapping("/")
+    public Result<?> getRemainCount(String commodityCode) {
+        return storageService.getRemainCount(commodityCode);
+    }
 
 }

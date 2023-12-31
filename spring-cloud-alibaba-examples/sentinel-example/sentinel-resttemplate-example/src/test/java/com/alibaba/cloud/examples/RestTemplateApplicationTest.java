@@ -27,18 +27,18 @@ import org.junit.jupiter.api.Test;
 @Disabled("For debugging")
 public class RestTemplateApplicationTest {
 
-	/**
-	 * Please run this test after execute `mvn clean install -Pnative -e` .
-	 *
-	 * @throws Exception the exception
-	 */
-	@Test
-	public void runWithSpringAotModeAfterProcessAot() throws Exception {
-		// Enable spring-aot-mode
-		System.setProperty("spring.aot.enabled", "true");
+    /**
+     * Please run this test after execute `mvn clean install -Pnative -e` .
+     *
+     * @throws Exception the exception
+     */
+    @Test
+    public void runWithSpringAotModeAfterProcessAot() throws Exception {
+        // Enable spring-aot-mode
+        System.setProperty("spring.aot.enabled", "true");
 
-		// Start the application
-		RestTemplateApplication.main(new String[0]);
-	}
+        // Start the application
+        RestTemplateApplication.main(new String[0]);
+    }
 
 }

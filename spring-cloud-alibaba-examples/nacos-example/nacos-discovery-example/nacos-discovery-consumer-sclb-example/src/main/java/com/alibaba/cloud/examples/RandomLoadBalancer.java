@@ -16,11 +16,6 @@
 
 package com.alibaba.cloud.examples;
 
-import java.util.List;
-import java.util.Random;
-
-import reactor.core.publisher.Mono;
-
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.DefaultResponse;
@@ -29,6 +24,10 @@ import org.springframework.cloud.client.loadbalancer.Response;
 import org.springframework.cloud.loadbalancer.core.NoopServiceInstanceListSupplier;
 import org.springframework.cloud.loadbalancer.core.ReactorServiceInstanceLoadBalancer;
 import org.springframework.cloud.loadbalancer.core.ServiceInstanceListSupplier;
+import reactor.core.publisher.Mono;
+
+import java.util.List;
+import java.util.Random;
 
 /**
  * Self-defined randomLoadBalancer.
@@ -37,44 +36,42 @@ import org.springframework.cloud.loadbalancer.core.ServiceInstanceListSupplier;
  */
 public class RandomLoadBalancer implements ReactorServiceInstanceLoadBalancer {
 
-	private ObjectProvider<ServiceInstanceListSupplier> serviceInstanceListSupplierProvider;
+    private final String serviceId;
+    private final Random random;
+    private ObjectProvider<ServiceInstanceListSupplier> serviceInstanceListSupplierProvider;
 
-	private final String serviceId;
+    public RandomLoadBalancer(
+            ObjectProvider<ServiceInstanceListSupplier> serviceInstanceListSupplierProvider,
+            String serviceId) {
+        this.serviceInstanceListSupplierProvider = serviceInstanceListSupplierProvider;
+        this.serviceId = serviceId;
+        this.random = new Random();
+    }
 
-	private final Random random;
+    @Override
+    public Mono<Response<ServiceInstance>> choose(
+            org.springframework.cloud.client.loadbalancer.Request request) {
+        ServiceInstanceListSupplier supplier = serviceInstanceListSupplierProvider
+                .getIfAvailable(NoopServiceInstanceListSupplier::new);
 
-	public RandomLoadBalancer(
-			ObjectProvider<ServiceInstanceListSupplier> serviceInstanceListSupplierProvider,
-			String serviceId) {
-		this.serviceInstanceListSupplierProvider = serviceInstanceListSupplierProvider;
-		this.serviceId = serviceId;
-		this.random = new Random();
-	}
+        return supplier.get().next().map(this::getInstanceResponse);
+    }
 
-	@Override
-	public Mono<Response<ServiceInstance>> choose(
-			org.springframework.cloud.client.loadbalancer.Request request) {
-		ServiceInstanceListSupplier supplier = serviceInstanceListSupplierProvider
-				.getIfAvailable(NoopServiceInstanceListSupplier::new);
+    @Override
+    public Mono<Response<ServiceInstance>> choose() {
+        ServiceInstanceListSupplier supplier = serviceInstanceListSupplierProvider
+                .getIfAvailable(NoopServiceInstanceListSupplier::new);
+        return supplier.get().next().map(this::getInstanceResponse);
+    }
 
-		return supplier.get().next().map(this::getInstanceResponse);
-	}
+    private Response<ServiceInstance> getInstanceResponse(
+            List<ServiceInstance> instances) {
+        if (instances.isEmpty()) {
+            return new EmptyResponse();
+        }
+        ServiceInstance instance = instances.get(random.nextInt(instances.size()));
 
-	@Override
-	public Mono<Response<ServiceInstance>> choose() {
-		ServiceInstanceListSupplier supplier = serviceInstanceListSupplierProvider
-				.getIfAvailable(NoopServiceInstanceListSupplier::new);
-		return supplier.get().next().map(this::getInstanceResponse);
-	}
-
-	private Response<ServiceInstance> getInstanceResponse(
-			List<ServiceInstance> instances) {
-		if (instances.isEmpty()) {
-			return new EmptyResponse();
-		}
-		ServiceInstance instance = instances.get(random.nextInt(instances.size()));
-
-		return new DefaultResponse(instance);
-	}
+        return new DefaultResponse(instance);
+    }
 
 }

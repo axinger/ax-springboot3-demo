@@ -24,7 +24,7 @@ import com.alibaba.cloud.integration.common.Result;
  */
 public interface OrderService {
 
-	Result<?> createOrder(String userId, String commodityCode, Integer count)
-			throws BusinessException;
+    Result<?> createOrder(String userId, String commodityCode, Integer count)
+            throws BusinessException;
 
 }

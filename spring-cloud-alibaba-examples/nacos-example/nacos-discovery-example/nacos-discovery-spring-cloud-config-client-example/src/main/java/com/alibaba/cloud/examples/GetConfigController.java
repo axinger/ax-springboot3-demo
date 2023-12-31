@@ -28,12 +28,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class GetConfigController {
 
-	@Value("${config}")
-	private String config;
+    @Value("${config}")
+    private String config;
 
-	@GetMapping("/config")
-	public String getConfig() {
-		return config;
-	}
+    @GetMapping("/config")
+    public String getConfig() {
+        return config;
+    }
 
 }

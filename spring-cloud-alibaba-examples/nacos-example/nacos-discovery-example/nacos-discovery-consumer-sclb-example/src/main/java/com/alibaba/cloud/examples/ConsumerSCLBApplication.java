@@ -23,7 +23,6 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 
 /**
- *
  * @author fangjian0423, MieAh
  */
 @SpringBootApplication
@@ -31,9 +30,9 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableFeignClients
 public class ConsumerSCLBApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ConsumerSCLBApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(ConsumerSCLBApplication.class, args);
+    }
 
 }
 

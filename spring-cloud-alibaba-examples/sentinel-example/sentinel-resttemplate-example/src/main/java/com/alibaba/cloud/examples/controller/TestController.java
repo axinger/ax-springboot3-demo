@@ -28,22 +28,22 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 public class TestController {
 
-	@Autowired
-	RestTemplate restTemplate;
+    @Autowired
+    RestTemplate restTemplate;
 
-	@GetMapping("/exp")
-	public String exp() {
-		return restTemplate.getForObject("https://httpbin.org/status/500", String.class);
-	}
+    @GetMapping("/exp")
+    public String exp() {
+        return restTemplate.getForObject("https://httpbin.org/status/500", String.class);
+    }
 
-	@GetMapping("/rt")
-	public String rt() {
-		return restTemplate.getForObject("https://httpbin.org/delay/3", String.class);
-	}
+    @GetMapping("/rt")
+    public String rt() {
+        return restTemplate.getForObject("https://httpbin.org/delay/3", String.class);
+    }
 
-	@GetMapping("/get")
-	public String get() {
-		return restTemplate.getForObject("https://httpbin.org/get", String.class);
-	}
+    @GetMapping("/get")
+    public String get() {
+        return restTemplate.getForObject("https://httpbin.org/get", String.class);
+    }
 
 }

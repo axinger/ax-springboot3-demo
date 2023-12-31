@@ -17,7 +17,6 @@
 package com.alibaba.cloud.integration.consumer.controller;
 
 import com.alibaba.cloud.integration.consumer.service.PraiseService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,12 +29,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/praise")
 public class PraiseController {
 
-	@Autowired
-	private PraiseService praiseService;
+    @Autowired
+    private PraiseService praiseService;
 
-	@GetMapping("/query")
-	public Integer getPraise(Integer itemId) {
-		return praiseService.getPraise(itemId);
-	}
+    @GetMapping("/query")
+    public Integer getPraise(Integer itemId) {
+        return praiseService.getPraise(itemId);
+    }
 
 }

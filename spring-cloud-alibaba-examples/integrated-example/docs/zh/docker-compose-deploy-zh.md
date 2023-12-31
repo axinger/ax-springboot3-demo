@@ -31,7 +31,9 @@
 
 ### 组件启动
 
-进入 `spring-cloud-alibaba-examples/integrated-example` 目录下，在终端中执行以下命令 `docker-compose -f ./docker-compose/docker-compose-env.yml up -d` 来快速部署运行 example 所需组件。
+进入 `spring-cloud-alibaba-examples/integrated-example`
+目录下，在终端中执行以下命令 `docker-compose -f ./docker-compose/docker-compose-env.yml up -d` 来快速部署运行 example
+所需组件。
 
 ### 添加配置
 
@@ -46,18 +48,23 @@ docker-compose-env.yml 文件运行成功之后，添加 Nacos 配置：
 
 ### 服务启动
 
-进入 `spring-cloud-alibaba-examples/integrated-example` 目录下，在终端中执行以下命令 `docker-compose -f ./docker-compose/docker-compose-service.yml up -d` 来快速部署运行 example 所需服务。
+进入 `spring-cloud-alibaba-examples/integrated-example`
+目录下，在终端中执行以下命令 `docker-compose -f ./docker-compose/docker-compose-service.yml up -d` 来快速部署运行 example
+所需服务。
 
 ## 停止所有容器
 
 ### 停止服务容器
 
-进入 `spring-cloud-alibaba-examples/integrated-example` 目录下，在终端中执行以下命令 `docker-compose -f ./docker-compose/docker-compose-service.yml down` 来停止正在运行的 example 服务容器。
-
+进入 `spring-cloud-alibaba-examples/integrated-example`
+目录下，在终端中执行以下命令 `docker-compose -f ./docker-compose/docker-compose-service.yml down` 来停止正在运行的
+example 服务容器。
 
 ### 停止组件容器
 
-进入 `spring-cloud-alibaba-examples/integrated-example` 目录下，在终端中执行以下命令 `docker-compose -f ./docker-compose/docker-compose-env.yml down` 来停止正在运行的 example 组件容器。
+进入 `spring-cloud-alibaba-examples/integrated-example`
+目录下，在终端中执行以下命令 `docker-compose -f ./docker-compose/docker-compose-env.yml down` 来停止正在运行的 example
+组件容器。
 
 > 在容器启动时，可以通过 `docker-compose -f docker-compose-*.yml up` 观察容器的启动过程！
 
@@ -87,13 +94,15 @@ docker-compose-env.yml 文件运行成功之后，添加 Nacos 配置：
 
 在本 demo 示例中，为了便于演示，每件商品的单价都为2。
 
-而在前面的准备工作中，**初始化业务数据库表**的时候应用新建了一个用户，用户 userId 为 admin，余额为 3 元；同时新建了一个编号为 1 号的商品，库存为 100 件。
+而在前面的准备工作中，**初始化业务数据库表**的时候应用新建了一个用户，用户 userId 为 admin，余额为 3 元；同时新建了一个编号为
+1 号的商品，库存为 100 件。
 
 因此通过上述的操作，应用会创建一个订单，扣减对应商品编号为 1 号的库存个数（100-1=99），扣减 admin 用户的余额（3-2=1）。
 
 ![](https://my-img-1.oss-cn-hangzhou.aliyuncs.com/image-20221016155429801.png)
 
-如果再次请求相同的接口，同样是先扣减库存（99-1=98），但是会因为 admin 用户余额不足而抛出异常，并被 Seata 捕获，执行分布式事务二阶段提交，回滚事务。
+如果再次请求相同的接口，同样是先扣减库存（99-1=98），但是会因为 admin 用户余额不足而抛出异常，并被 Seata
+捕获，执行分布式事务二阶段提交，回滚事务。
 
 ![](https://my-img-1.oss-cn-hangzhou.aliyuncs.com/image-20221016155436112.png)
 
@@ -126,8 +135,10 @@ docker-compose-env.yml 文件运行成功之后，添加 Nacos 配置：
 
 访问 `http://integrated-frontend:8080/rocketmq` 体验对应场景。
 
-由于之前在 Nacos 中配置了 `integrated-praise-consumer` 消费者模块的消费速率以及间隔，在点击按钮时应用模拟 1000 个点赞请求，针对 1000 个点赞请求，`integrated-praise-provider`
-会将 1000 次请求都向 Broker 投递消息，而在消费者模块中会根据配置的消费速率进行消费，向数据库更新点赞的商品数据，模拟大流量下 RocketMQ 削峰填谷的特性。
+由于之前在 Nacos 中配置了 `integrated-praise-consumer` 消费者模块的消费速率以及间隔，在点击按钮时应用模拟 1000 个点赞请求，针对
+1000 个点赞请求，`integrated-praise-provider`
+会将 1000 次请求都向 Broker 投递消息，而在消费者模块中会根据配置的消费速率进行消费，向数据库更新点赞的商品数据，模拟大流量下
+RocketMQ 削峰填谷的特性。
 
 可以看到数据库中点赞的个数正在动态更新。
 
@@ -140,8 +151,8 @@ docker-compose-env.yml 文件运行成功之后，添加 Nacos 配置：
 当然各个组件的功能特性不仅仅只包含最佳实践中演示的这些，如果您感兴趣或是想要深入了解，欢迎学习各个组件的独立 example 相关文档。
 
 - Nacos examples
-  - [Nacos config example](../../../nacos-example/nacos-config-example/readme-zh.md)
-  - [Nacos discovery example](../../../nacos-example/nacos-discovery-example/readme-zh.md)
+    - [Nacos config example](../../../nacos-example/nacos-config-example/readme-zh.md)
+    - [Nacos discovery example](../../../nacos-example/nacos-discovery-example/readme-zh.md)
 - [Sentinel core example](../../../sentinel-example/sentinel-core-example/readme-zh.md)
 - [Seata example](../../../seata-example/readme-zh.md)
 - [RocketMQ example](../../../rocketmq-example/readme-zh.md)

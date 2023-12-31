@@ -26,16 +26,19 @@
 ## 启动测试
 
 进入到 `spring-cloud-alibaba-examples/integrated-example` 目录下，执行如下命令利用 Helm 部署应用程序。
+
 ```shell
 helm package helm-chart
 
 helm install integrated-example integrated-example-1.0.0.tgz
 ```
+
 通过运行上述命令，根据SCA社区提供的 Helm Chart 文档通过 Helm 快速完成最佳实践示例的部署。
 
 可以通过 Kubernetes 提供的 `kubectl` 命令查看各容器资源部署的情况，耐心等待**所有容器完成启动后**即可到对应页面体验各个组件的使用场景及能力。
 
 如果您想停止体验，输入如下命令。
+
 ```shell
 helm uninstall integrated-example
 ```
@@ -64,13 +67,15 @@ helm uninstall integrated-example
 
 在本 demo 示例中，为了便于演示，每件商品的单价都为2。
 
-而在 `integrated-mysql` 容器的初始化时，**初始化业务数据库表**的时候新建了一个用户，用户的userId为admin，余额为 3 元；同时新建了一个编号为 1 号的商品，库存为 100 件。
+而在 `integrated-mysql` 容器的初始化时，**初始化业务数据库表**的时候新建了一个用户，用户的userId为admin，余额为 3
+元；同时新建了一个编号为 1 号的商品，库存为 100 件。
 
 因此通过上述的操作，应用会创建一个订单，扣减对应商品编号为 1 号的库存个数（100-1=99），扣减 admin 用户的余额（3-2=1）。
 
 ![](https://my-img-1.oss-cn-hangzhou.aliyuncs.com/image-20221016143057730.png)
 
-如果再次请求相同的接口，同样是先扣减库存（99-1=98），但是会因为 admin 用户余额不足而抛出异常，并被 Seata 捕获，执行分布式事务二阶段提交，回滚事务。
+如果再次请求相同的接口，同样是先扣减库存（99-1=98），但是会因为 admin 用户余额不足而抛出异常，并被 Seata
+捕获，执行分布式事务二阶段提交，回滚事务。
 
 ![](https://my-img-1.oss-cn-hangzhou.aliyuncs.com/image-20221016143104810.png)
 
@@ -105,8 +110,10 @@ helm uninstall integrated-example
 
 ![](https://my-img-1.oss-cn-hangzhou.aliyuncs.com/image-20221016143342664.png)
 
-由于之前在 Nacos 中配置了 `integrated-praise-consumer` 消费者模块的消费速率以及间隔，在点击按钮时应用将会模拟 1000 个点赞请求，针对 1000 个点赞请求，`integrated-praise-provider`
-会将 1000 次请求都向 Broker 投递消息，而在消费者模块中会根据配置的消费速率进行消费，向数据库更新点赞的商品数据，模拟大流量下 RocketMQ 削峰填谷的特性。
+由于之前在 Nacos 中配置了 `integrated-praise-consumer` 消费者模块的消费速率以及间隔，在点击按钮时应用将会模拟 1000
+个点赞请求，针对 1000 个点赞请求，`integrated-praise-provider`
+会将 1000 次请求都向 Broker 投递消息，而在消费者模块中会根据配置的消费速率进行消费，向数据库更新点赞的商品数据，模拟大流量下
+RocketMQ 削峰填谷的特性。
 
 可以看到数据库中点赞的个数正在动态更新。
 
@@ -116,7 +123,8 @@ helm uninstall integrated-example
 
 本示例**仅是针对各个组件选取出了较为典型的功能特性来服务应用场景**。
 
-当然各个组件的功能特性不仅仅只包含最佳实践中演示的这些，如果您对SCA感兴趣或是想要深入了解SCA项目，欢迎阅览各个组件的独立 example 相关文档。
+当然各个组件的功能特性不仅仅只包含最佳实践中演示的这些，如果您对SCA感兴趣或是想要深入了解SCA项目，欢迎阅览各个组件的独立
+example 相关文档。
 
 - Nacos examples
     - [Nacos config example](../../../nacos-example/nacos-config-example/readme-zh.md)

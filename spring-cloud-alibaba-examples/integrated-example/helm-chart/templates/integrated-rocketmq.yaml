@@ -28,7 +28,7 @@ spec:
       containers:
         - name: mqnamesrv
           image: registry.cn-hangzhou.aliyuncs.com/sca-community/rocketmq-server
-          command: ["sh","/usr/local/rocketmq-4.8.0/bin/mqnamesrv"]
+          command: [ "sh","/usr/local/rocketmq-4.8.0/bin/mqnamesrv" ]
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 9876
@@ -52,7 +52,7 @@ spec:
       containers:
         - name: mqbroker
           image: registry.cn-hangzhou.aliyuncs.com/sca-community/rocketmq-server
-          command: ["sh","/usr/local/rocketmq-4.8.0/bin/mqbroker", "-n","rocketmq:9876"]
+          command: [ "sh","/usr/local/rocketmq-4.8.0/bin/mqbroker", "-n","rocketmq:9876" ]
           imagePullPolicy: IfNotPresent
           env:
             - name: JAVA_OPT

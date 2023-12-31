@@ -4,14 +4,16 @@
 
 If you have not installed Docker or Docker-Compose, please follow the official documentation to build the environment
 
-> Note: When using Docker-Compose to experience the demo, please make sure that the local machine memory resource is >= 24G!
+> Note: When using Docker-Compose to experience the demo, please make sure that the local machine memory resource is >=
+> 24G!
 
 - Docker：https://docs.docker.com/desktop/install/linux-install/
 - Docker-Compose：https://docs.docker.com/compose/install/
 
 ### Hosts configuration
 
-To ensure that the code can start properly, please configure the local host mapping first, add the following mapping to the configuration file.
+To ensure that the code can start properly, please configure the local host mapping first, add the following mapping to
+the configuration file.
 
 ```shell
 # for integrated-example
@@ -25,13 +27,16 @@ To ensure that the code can start properly, please configure the local host mapp
 
 ### Preparing jar packages
 
-Go to the `spring-cloud-alibaba-examples` directory and run the `mvn package` command to compile the project and generate the jar package, so as to prepare for the subsequent construction of the docker service image.
+Go to the `spring-cloud-alibaba-examples` directory and run the `mvn package` command to compile the project and
+generate the jar package, so as to prepare for the subsequent construction of the docker service image.
 
-## Quickly start 
+## Quickly start
 
 ### Component start
 
-Enter `spring-cloud-alibaba-examples/integration-example` directory, run the following command in the terminal to quickly deploy the components required to run example: `docker-compose -f ./docker-compose/docker-compose-env.yml up -d`.
+Enter `spring-cloud-alibaba-examples/integration-example` directory, run the following command in the terminal to
+quickly deploy the components required to run
+example: `docker-compose -f ./docker-compose/docker-compose-env.yml up -d`.
 
 ### Add configuration
 
@@ -46,19 +51,24 @@ The one-click import of all micro-service configurations is complete.
 
 ### Service start
 
-Enter `spring-cloud-alibaba-examples/integration-example` directory, Run the following command in the terminal to quickly deploy the services required for running example: `docker-compose -f ./docker-compose/docker-compose-service.yml up -d`.
+Enter `spring-cloud-alibaba-examples/integration-example` directory, Run the following command in the terminal to
+quickly deploy the services required for running
+example: `docker-compose -f ./docker-compose/docker-compose-service.yml up -d`.
 
 ## Stop all containers
 
 ### Stops the service container
 
-Enter `spring-cloud-alibaba-examples/integration-examplee` directory, Run the following command in the terminal to `docker-compose -f ./docker-compose/docker-compose-service.yml down` to stop the running example service container.
+Enter `spring-cloud-alibaba-examples/integration-examplee` directory, Run the following command in the terminal
+to `docker-compose -f ./docker-compose/docker-compose-service.yml down` to stop the running example service container.
 
 ### Stops the component container
 
-Enter `spring-cloud-alibaba-examples/integration-example` directory, Run the following command in the terminal to `docker-compose -f ./docker-compose/docker-compose-env.yml down` to stop the running example component container.
+Enter `spring-cloud-alibaba-examples/integration-example` directory, Run the following command in the terminal
+to `docker-compose -f ./docker-compose/docker-compose-env.yml down` to stop the running example component container.
 
-> When the container starts, you can observe the startup process of the container through `docker-compose- f docker-compose-*.yml up` !
+> When the container starts, you can observe the startup process of the container
+> through `docker-compose- f docker-compose-*.yml up` !
 
 ## Experience Demo
 
@@ -66,7 +76,8 @@ Enter `spring-cloud-alibaba-examples/integration-example` directory, Run the fol
 
 #### Scenario Description
 
-For the distributed transaction capability, we provide the scenario **where a user places an order for goods** and after placing the order.
+For the distributed transaction capability, we provide the scenario **where a user places an order for goods** and after
+placing the order.
 
 - First request the inventory module and deduct the inventory
 - Deduct the account balance
@@ -76,7 +87,8 @@ For the distributed transaction capability, we provide the scenario **where a us
 
 Visit `http://integrated-frontend:8080/order` to experience the corresponding scenario.
 
-By clicking the order button directly to submit the form, we simulate the client sending a request to the gateway to create an order.
+By clicking the order button directly to submit the form, we simulate the client sending a request to the gateway to
+create an order.
 
 - The user's userId is admin
 - The item number of the user's order is 1
@@ -86,13 +98,17 @@ By clicking the order button directly to submit the form, we simulate the client
 
 In this demo example, the unit price of each item is 2 for demonstration purposes.
 
-And in the previous preparation, **initialize business database table** we created a new user userId = admin with a balance of $3, and a new item numbered 1 with 100 units in stock.
+And in the previous preparation, **initialize business database table** we created a new user userId = admin with a
+balance of $3, and a new item numbered 1 with 100 units in stock.
 
-So by doing the above, we will create an order, deduct the number of items in stock corresponding to item number 1 (100-1=99), and deduct the balance of the admin user (3-2=1).
+So by doing the above, we will create an order, deduct the number of items in stock corresponding to item number 1 (
+100-1=99), and deduct the balance of the admin user (3-2=1).
 
 ![](https://my-img-1.oss-cn-hangzhou.aliyuncs.com/image-20221016155429801.png)
 
-If the same interface is requested again, again the inventory is deducted first (99-1=98), but an exception is thrown because the admin user's balance is insufficient and is caught by Seata, which performs a two-stage commit of the distributed transaction and rolls back the transaction.
+If the same interface is requested again, again the inventory is deducted first (99-1=98), but an exception is thrown
+because the admin user's balance is insufficient and is caught by Seata, which performs a two-stage commit of the
+distributed transaction and rolls back the transaction.
 
 ![](https://my-img-1.oss-cn-hangzhou.aliyuncs.com/image-20221016155436112.png)
 
@@ -102,10 +118,13 @@ You can see that the database still has 99 records in stock because of the rollb
 
 #### Scenario Description
 
-For service fusion limiting and peak and valley cutting in the context of high traffic, we provide a scenario **where users make likes for products**. In this scenario, we provide two ways to deal with high traffic.
+For service fusion limiting and peak and valley cutting in the context of high traffic, we provide a scenario **where
+users make likes for products**. In this scenario, we provide two ways to deal with high traffic.
 
 - Sentinel binds specified gateway routes on the gateway side for fusion degradation of services.
-- RocketMQ performs traffic clipping, where the producer sends messages to RocketMQ under high traffic requests, while the consumer pulls and consumes through a configurable consumption rate, reducing the pressure of high traffic direct requests to the database to increase the number of likes requests.
+- RocketMQ performs traffic clipping, where the producer sends messages to RocketMQ under high traffic requests, while
+  the consumer pulls and consumes through a configurable consumption rate, reducing the pressure of high traffic direct
+  requests to the database to increase the number of likes requests.
 
 #### Start test
 
@@ -115,9 +134,11 @@ Visit `http://integrated-frontend:8080/sentinel` to experience the corresponding
 
 ![](https://my-img-1.oss-cn-hangzhou.aliyuncs.com/image-20221016155501290.png)
 
-The Gateway routing point service has a flow limit rule of 5, while 10 concurrent requests are simulated on the front end through asynchronous processing.
+The Gateway routing point service has a flow limit rule of 5, while 10 concurrent requests are simulated on the front
+end through asynchronous processing.
 
-Therefore, we can see that Sentinel performs a service fusion on the Gateway side to return the fallback to the client for the extra traffic, while the number of likes in the database is updated (+5).
+Therefore, we can see that Sentinel performs a service fusion on the Gateway side to return the fallback to the client
+for the extra traffic, while the number of likes in the database is updated (+5).
 
 ![](https://my-img-1.oss-cn-hangzhou.aliyuncs.com/image-20220914155755103.png)
 
@@ -125,8 +146,11 @@ Therefore, we can see that Sentinel performs a service fusion on the Gateway sid
 
 Visit `http://integrated-frontend:8080/rocketmq` to experience the corresponding scenario.
 
-Since we previously configured the consumption rate and interval of the `integrated-praise-consumer` consumer module in Nacos, we simulate 1000 requests for likes at the click of a button, and the `integrated-praise-provider`
-will deliver 1000 requests to the Broker, and the consumer module will consume them according to the configured consumption rate, and update the database with the product data of the likes, simulating the characteristics of RocketMQ to cut the peaks and fill the valleys under high traffic.
+Since we previously configured the consumption rate and interval of the `integrated-praise-consumer` consumer module in
+Nacos, we simulate 1000 requests for likes at the click of a button, and the `integrated-praise-provider`
+will deliver 1000 requests to the Broker, and the consumer module will consume them according to the configured
+consumption rate, and update the database with the product data of the likes, simulating the characteristics of RocketMQ
+to cut the peaks and fill the valleys under high traffic.
 
 You can see that the number of likes in the database is being dynamically updated.
 
@@ -136,7 +160,8 @@ You can see that the number of likes in the database is being dynamically update
 
 This example **is just a selection of typical features for each component to serve the application scenario**.
 
-If you are interested or want to go deeper, you are welcome to study the individual example documentation for each component.
+If you are interested or want to go deeper, you are welcome to study the individual example documentation for each
+component.
 
 - Nacos examples
     - [Nacos config example](../../../nacos-example/nacos-config-example/readme.md)

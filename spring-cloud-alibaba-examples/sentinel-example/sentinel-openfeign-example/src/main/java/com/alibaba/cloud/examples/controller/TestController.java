@@ -17,7 +17,6 @@
 package com.alibaba.cloud.examples.controller;
 
 import com.alibaba.cloud.examples.configuration.HttpbinClient;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,22 +28,22 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TestController {
 
-	@Autowired
-	private HttpbinClient httpbinClient;
+    @Autowired
+    private HttpbinClient httpbinClient;
 
-	@GetMapping("/rt")
-	public String delay() {
-		return httpbinClient.delay();
-	}
+    @GetMapping("/rt")
+    public String delay() {
+        return httpbinClient.delay();
+    }
 
-	@GetMapping("/exp")
-	public String exp() {
-		return httpbinClient.status500();
-	}
+    @GetMapping("/exp")
+    public String exp() {
+        return httpbinClient.status500();
+    }
 
-	@GetMapping("/get")
-	public String get() {
-		return httpbinClient.get();
-	}
+    @GetMapping("/get")
+    public String get() {
+        return httpbinClient.get();
+    }
 
 }
