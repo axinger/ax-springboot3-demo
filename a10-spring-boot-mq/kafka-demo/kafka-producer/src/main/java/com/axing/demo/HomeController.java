@@ -27,7 +27,7 @@ public class HomeController {
      * 发送消息体为基本类型的消息
      */
     @GetMapping("/sendSimple")
-    public String sendSimple() {
+    public Object sendSimple() {
 
         ProducerUser ProducerUser = new ProducerUser();
         ProducerUser.setLastName("jim");
@@ -54,7 +54,10 @@ public class HomeController {
 //                log.info("发送消息成功,{}", sendResult.toString());
 //            }
 //        });
-        return "success";
+        SendResult<String, ProducerUser> join = send.join();
+        ProducerUser value = join.getProducerRecord().value();
+        log.info("发送完成={}", value);
+        return value;
     }
 
     /***
