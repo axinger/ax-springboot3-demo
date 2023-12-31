@@ -4,6 +4,7 @@ import com.axing.demo.config.Topic;
 import com.axing.demo.model.MessageWrapper;
 import com.axing.demo.model.User;
 import com.axing.demo.service.MQProducerService;
+import jakarta.annotation.Resource;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -70,6 +71,9 @@ public class RocketMQController {
 
     @Autowired
     private RocketMQTemplate rocketMQTemplate;
+
+//    @Autowired
+//    RocketMQClientTemplate rocketMQClientTemplate;
 
     @GetMapping("/noOrder")
     public Boolean updateUser() {
