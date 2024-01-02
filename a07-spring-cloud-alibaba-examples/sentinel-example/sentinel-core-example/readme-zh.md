@@ -47,7 +47,7 @@
    Sentinel 提供了两种配置限流规则的方式：代码配置 和 控制台配置。本示例使用的方式为通过控制台配置。
 
     1.
-    通过代码来实现限流规则的配置。一个简单的限流规则配置示例代码如下，更多限流规则配置详情请参考 [Sentinel 文档](https://github.com/alibaba/Sentinel/wiki/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8#%E5%AE%9A%E4%B9%89%E8%A7%84%E5%88%99)。
+   通过代码来实现限流规则的配置。一个简单的限流规则配置示例代码如下，更多限流规则配置详情请参考 [Sentinel 文档](https://github.com/alibaba/Sentinel/wiki/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8#%E5%AE%9A%E4%B9%89%E8%A7%84%E5%88%99)。
 
    ```java
    List<FlowRule> rules = new ArrayList<FlowRule>();
@@ -68,7 +68,7 @@
 1. 首先需要获取 Sentinel 控制台，支持直接下载和源码构建两种方式。
 
     1.
-    直接下载：[下载 Sentinel 控制台](https://edas-public.oss-cn-hangzhou.aliyuncs.com/install_package/demo/sentinel-dashboard.jar)
+   直接下载：[下载 Sentinel 控制台](https://edas-public.oss-cn-hangzhou.aliyuncs.com/install_package/demo/sentinel-dashboard.jar)
     2. 源码构建：进入 Sentinel [Github 项目页面](https://github.com/alibaba/Sentinel)，将代码 git clone
        到本地自行编译打包，[参考此文档](https://github.com/alibaba/Sentinel/tree/2021.x/sentinel-dashboard)。
 

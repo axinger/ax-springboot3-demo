@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <parent>
+        <groupId>com.github.axinger</groupId>
         <artifactId>a07-spring-cloud-alibaba-examples</artifactId>
-        <groupId>com.alibaba.cloud</groupId>
-        <version>3.2.1.1</version>
+        <version>3.2.1.2</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>

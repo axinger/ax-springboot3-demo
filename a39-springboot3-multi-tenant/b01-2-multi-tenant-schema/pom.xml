@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.github.axinger</groupId>
         <artifactId>a39-springboot3-multi-tenant</artifactId>
-        <version>3.2.1.1</version>
+        <version>3.2.1.2</version>
     </parent>
 
     <artifactId>b01-2-multi-tenant-schema</artifactId>

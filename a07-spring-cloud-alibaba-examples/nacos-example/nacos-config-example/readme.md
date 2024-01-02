@@ -75,15 +75,15 @@ spring:
    **Note: You can also add it in other ways. If you are using the Nacos version with its own console, it is recommended
    to configure it directly using the console.**
 
-	Details of the added configuration are as follows
-	
-		dataId is nacos-config-example.properties
-		group is DEFAULT_GROUP
-		
-		content is:
-		
+   Details of the added configuration are as follows
+
+   	dataId is nacos-config-example.properties
+   	group is DEFAULT_GROUP
+   	
+   	content is:
+   	
    		spring.cloud.nacos.config.serveraddr=127.0.0.1:8848
-	    spring.cloud.nacos.config.prefix=PREFIX
+       spring.cloud.nacos.config.prefix=PREFIX
         spring.cloud.nacos.config.group=GROUP
         spring.cloud.nacos.config.namespace=NAMESPACE
 

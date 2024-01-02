@@ -6,7 +6,7 @@
     <parent>
         <artifactId>a02-spring-boot-other</artifactId>
         <groupId>com.github.axinger</groupId>
-        <version>3.2.1.1</version>
+        <version>3.2.1.2</version>
     </parent>
 
     <artifactId>a02-21-annotation</artifactId>
