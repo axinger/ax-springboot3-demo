@@ -43,18 +43,16 @@
     </modules>
 
 
-    <dependencies>
-        <dependency>
-            <groupId>com.github.axinger</groupId>
-            <artifactId>util-spring-boot-starter</artifactId>
-        </dependency>
+<!--    <dependencies>-->
+<!--        <dependency>-->
+<!--            <groupId>com.github.axinger</groupId>-->
+<!--            <artifactId>util-spring-boot-starter</artifactId>-->
+<!--        </dependency>-->
 
-    </dependencies>
+<!--    </dependencies>-->
 
 
     <dependencyManagement>
-
-
         <dependencies>
             <dependency>
                 <groupId>com.github.axinger</groupId>

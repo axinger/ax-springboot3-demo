@@ -1,6 +1,8 @@
 package com.axing.controller;
 
+import com.axing.service.UserService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
@@ -12,6 +14,10 @@ import java.time.Duration;
 @RequestMapping("/f")
 @Slf4j
 public class FluxController {
+
+    @Autowired
+    private UserService userService;
+
 
     /**
      * 服务器发送事件(Server-Sent Events)，简称 SSE 打字效果
@@ -54,4 +60,11 @@ public class FluxController {
                 .map(val -> name + val)
                 .delayElement(Duration.ofSeconds(1));
     }
+
+    // 查询所有用户 Flux 多个返回值
+    @GetMapping("/user")
+    public Flux<Object> getAllUser() {
+        return userService.getAllUser();
+    }
 }
+
