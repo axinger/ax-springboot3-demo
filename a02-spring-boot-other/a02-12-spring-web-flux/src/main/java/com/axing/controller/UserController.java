@@ -56,7 +56,8 @@ public class UserController {
 
 
     // @GetMapping(path = "/em",produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-    @GetMapping(path = "/em", produces = MediaType.APPLICATION_STREAM_JSON_VALUE)
+//    @GetMapping(path = "/em", produces = MediaType.APPLICATION_STREAM_JSON_VALUE)
+    @GetMapping(path = "/em", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public ResponseBodyEmitter emitter() {
 
         ResponseBodyEmitter emitter = new ResponseBodyEmitter(-1L);

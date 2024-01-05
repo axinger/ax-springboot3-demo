@@ -24,19 +24,4 @@ public class RouteConfig {
 
 
     }
-
-    // @Bean
-    // public RouterFunction<ServerResponse> user2(UserHandler userHandler) {
-    //     return RouterFunctions.route()
-    //             .GET("/flux2/users/list",userHandler::getAllUser)
-    //
-    //             .POST("/hello2",serverRequest -> {
-    //                 String name=serverRequest.exchange().getRequest().getQueryParams().getFirst("name");
-    //                 System.out.println("name："+name);
-    //
-    //                 assert name != null;
-    //                 return ServerResponse.ok().bodyValue(name);
-    //             })
-    //             .build();
-    // }
 }
