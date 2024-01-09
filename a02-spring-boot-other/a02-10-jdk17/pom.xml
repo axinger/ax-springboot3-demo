@@ -23,5 +23,10 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.github.axinger</groupId>
+            <artifactId>util-spring-boot-starter</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 </project>

@@ -73,6 +73,10 @@
             <groupId>com.github.axinger</groupId>
             <artifactId>advice-spring-boot-starter</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.github.axinger</groupId>
+            <artifactId>util-spring-boot-starter</artifactId>
+        </dependency>
     </dependencies>
 
     <!--指定运行环境,每次切换需要更新一下maven,有缓存-->
