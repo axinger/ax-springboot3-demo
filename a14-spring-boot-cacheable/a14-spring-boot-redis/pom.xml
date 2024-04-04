@@ -26,6 +26,11 @@
 
         <dependency>
             <groupId>com.github.axinger</groupId>
+            <artifactId>redis-spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.axinger</groupId>
             <artifactId>advice-spring-boot-starter</artifactId>
         </dependency>
 
@@ -44,16 +49,15 @@
             <artifactId>doc-spring-boot-starter</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.alibaba.fastjson2</groupId>
-            <artifactId>fastjson2-extension</artifactId>
-            <version>2.0.40</version>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba.fastjson2</groupId>
-            <artifactId>fastjson2-extension-spring6</artifactId>
-            <version>2.0.40</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.alibaba.fastjson2</groupId>-->
+<!--            <artifactId>fastjson2-extension</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>com.alibaba.fastjson2</groupId>-->
+<!--            <artifactId>fastjson2-extension-spring6</artifactId>-->
+<!--            <version>2.0.40</version>-->
+<!--        </dependency>-->
 
         <dependency>
             <groupId>com.mysql</groupId>
@@ -76,10 +80,7 @@
             <groupId>com.github.axinger</groupId>
             <artifactId>json-spring-boot-starter</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.github.axinger</groupId>
-            <artifactId>json-spring-boot-starter</artifactId>
-        </dependency>
+
 
     </dependencies>
 

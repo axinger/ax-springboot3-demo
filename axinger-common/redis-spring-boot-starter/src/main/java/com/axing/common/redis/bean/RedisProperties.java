@@ -9,5 +9,5 @@ public class RedisProperties {
     /**
      * 自定义对象,存入是否需要全路径包名,方便反序列化
      */
-    private boolean savePackageName = false;
+    private boolean savePackageName = true;
 }
