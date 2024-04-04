@@ -6,6 +6,8 @@ import org.redisson.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.concurrent.TimeUnit;
 
 @SpringBootTest
@@ -48,11 +50,13 @@ class RedissonDemoApplicationTest {
         student.setId(1L);
         student.setName("张三");
         student.setAge(18);
+//        student.setDateTime(LocalDateTime.now());
 
         // 对象操作
         RBucket<Student> rBucket = redissonClient.getBucket("objKey");
         // 设置value和key的有效期
-        rBucket.set(student, 60, TimeUnit.SECONDS);
+//        rBucket.set(student, 60, TimeUnit.SECONDS);
+        rBucket.set(student, Duration.ofSeconds(60));
         // 通过key获取value
         System.out.println(redissonClient.getBucket("objKey").get());
 
