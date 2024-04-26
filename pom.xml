@@ -15,9 +15,9 @@
 
     <groupId>com.github.axinger</groupId>
     <artifactId>ax-springboot3-demo</artifactId>
-    <version>3.2.1.2</version>
+    <version>3.2.4.1</version>
     <!--    <version>${revision}</version>-->
-    <name>springboot3案例</name>
+    <name>springboot3案例 ${project.version}</name>
     <description>个人代码总结</description>
     <packaging>pom</packaging>
 
@@ -34,7 +34,8 @@
         <spring-boot-admin.version>3.0.0</spring-boot-admin.version>
 <!--        <spring-cloud-dependencies.version>2022.0.0</spring-cloud-dependencies.version>-->
         <spring-cloud-dependencies.version>2023.0.0</spring-cloud-dependencies.version>
-        <spring-cloud-alibaba-dependencies.version>2022.0.0.0</spring-cloud-alibaba-dependencies.version>
+<!--        <spring-cloud-alibaba-dependencies.version>2022.0.0.0</spring-cloud-alibaba-dependencies.version>-->
+        <spring-cloud-alibaba-dependencies.version>2023.0.1.0</spring-cloud-alibaba-dependencies.version>
         <okhttp.version>4.10.0</okhttp.version>
         <mybatis.version>3.0.3</mybatis.version>
         <mybatis-plus.version>3.5.5</mybatis-plus.version>

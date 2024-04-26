@@ -6,7 +6,7 @@
     <parent>
         <artifactId>a02-spring-boot-other</artifactId>
         <groupId>com.github.axinger</groupId>
-        <version>3.2.1.2</version>
+        <version>3.2.4.1</version>
     </parent>
 
     <artifactId>a02-22-main-b</artifactId>
