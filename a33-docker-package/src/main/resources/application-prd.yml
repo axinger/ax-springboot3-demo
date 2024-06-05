@@ -1,7 +1,0 @@
-config:
-  name: 生产环境
-
-mybatis-plus:
-  configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-  mapper-locations: classpath:/mapper/*.xml
