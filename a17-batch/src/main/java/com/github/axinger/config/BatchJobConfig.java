@@ -23,7 +23,6 @@ import javax.annotation.Resource;
 @EnableBatchProcessing
 public class BatchJobConfig {
 
-
     @Resource
     private JobBuilderFactory jobBuilderFactory;
 
@@ -38,49 +37,6 @@ public class BatchJobConfig {
 
     @Autowired
     private UserWriter userWriter;
-//
-
-
-//    @Bean
-//    public JobRepository getJobRepository()  {
-//        JobRepositoryFactoryBean factory = new JobRepositoryFactoryBean();
-//        factory.setDataSource(batchDataSource);
-//        factory.setTransactionManager(getTransactionManager());
-//        factory.afterPropertiesSet();
-//        return factory.getObject();
-//    }
-
-//    @Bean
-//    public BatchConfigurer batchConfigurer() {
-//        return new CustomBatchConfigurer(dynamicRoutingDataSource);
-//    }
-
-//    @Bean
-//    @BatchDataSource
-//    @Lazy
-//    public DataSource batchDataSource(DataSource dataSource) {
-////        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-//
-//        DynamicRoutingDataSource ds = (DynamicRoutingDataSource) dataSource;
-//        DataSource quartz = ds.getDataSource("spring_batch");
-//
-//        return quartz;
-//    }
-
-    //    @Bean
-//    @BatchDataSource
-//    public DataSource batchDataSource() {
-////        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-//
-//        DataSource quartz = dynamicRoutingDataSource.getDataSource("spring_batch");
-//
-//        return quartz;
-//    }
-    @Bean
-    public PlatformTransactionManager getTransactionManager() {
-        return new ResourcelessTransactionManager();
-    }
-
 
     @Bean(name = "userJob")
     public Job job1() {
@@ -104,7 +60,7 @@ public class BatchJobConfig {
 
     @Bean
     public Step step1() {
-        return stepBuilderFactory.get("step1UserJob")
+        return stepBuilderFactory.get("step1UserStep")
                 .<User, User>chunk(1000)
                 .reader(userReader)
                 .processor(userProcessor)

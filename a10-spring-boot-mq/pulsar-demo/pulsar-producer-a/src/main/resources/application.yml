@@ -1,0 +1,18 @@
+#server:
+#  port: 11010
+#
+#spring:
+#  application:
+#    name: mall-order-app #订单作为消费者
+#  pulsar:
+#    producer:
+#      message-routing-mode: roundrobinpartition
+#      topic-name: bootTopic
+#      name: ax-producer-name
+#    client:
+#      service-url: pulsar://hadoop104:6650
+#    consumer:
+##      subscription:
+##        name: my-subscription
+#      topics:
+#        - my-topic
