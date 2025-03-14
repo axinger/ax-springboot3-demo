@@ -50,8 +50,8 @@
 //    @Test
 //    void test_2() {
 //
-////        select last_value(absoluteCoordinateX) from root.CP108
-////        String sql = "SELECT * from root.CP108";
+/// /        select last_value(absoluteCoordinateX) from root.CP108
+/// /        String sql = "SELECT * from root.CP108";
 //        String sql = "select * from root.a1.b1;";
 //        List<Map<String, Object>> resultList = iotDBConfig.query(sql);
 //        System.out.println("resultList = " + resultList);

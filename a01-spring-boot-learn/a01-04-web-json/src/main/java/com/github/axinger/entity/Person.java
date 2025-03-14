@@ -26,8 +26,8 @@ public class Person implements Serializable {
     String string2 = "B";
     List<String> list;
     List<String> list2;
-    Map map1;
-    Map map2;
+    Map<String, String> map1;
+    Map<String, Object> map2;
     //    @JsonProperty(value = "aBoolean")//jackson,第二个字母大写,需要指定
     Boolean aBoolean;
     @JsonProperty(value = "aBoolean2")

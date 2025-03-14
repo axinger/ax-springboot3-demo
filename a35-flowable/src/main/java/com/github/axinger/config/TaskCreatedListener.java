@@ -50,21 +50,21 @@
 //        log.info("监听任务 taskEntity.getId()={}", taskEntity.getId());
 //
 //
-////        processes.forEach(process -> process.findFlowElementsOfType(UserTask.class)
-////                .forEach(userTask -> {
-////
-////                    if (StringUtil.equals(userTask.getId(), taskEntity.getTaskDefinitionKey()) && StringUtil.isNotBlank(userTask.getAssignee())) {
-////                        ProcessInstance processInstance = runtimeService.createProcessInstanceQuery().processInstanceId(processInstanceId).singleResult();
-////                        if (StringUtil.equals(userTask.getAssignee().toLowerCase(), FlowAssigneeEnum.INITIATOR.getKey())) {
-////                            taskService.setAssignee(taskEntity.getId(), processInstance.getStartUserId());
-////                        } else if (StringUtil.equals(userTask.getAssignee().toLowerCase(), FlowAssigneeEnum.SUPERIOR.getKey())) {
-////                            String startUserId = processInstance.getStartUserId();
-////                            User startUser = UserCache.getUser(Long.parseLong(startUserId));
-////                            startUser.getDeptId();
-////                            // TODO 自行实现获取上级领导用户id
-////                        }
-////                    }
-////                }));
+/// /        processes.forEach(process -> process.findFlowElementsOfType(UserTask.class)
+/// /                .forEach(userTask -> {
+/// /
+/// /                    if (StringUtil.equals(userTask.getId(), taskEntity.getTaskDefinitionKey()) && StringUtil.isNotBlank(userTask.getAssignee())) {
+/// /                        ProcessInstance processInstance = runtimeService.createProcessInstanceQuery().processInstanceId(processInstanceId).singleResult();
+/// /                        if (StringUtil.equals(userTask.getAssignee().toLowerCase(), FlowAssigneeEnum.INITIATOR.getKey())) {
+/// /                            taskService.setAssignee(taskEntity.getId(), processInstance.getStartUserId());
+/// /                        } else if (StringUtil.equals(userTask.getAssignee().toLowerCase(), FlowAssigneeEnum.SUPERIOR.getKey())) {
+/// /                            String startUserId = processInstance.getStartUserId();
+/// /                            User startUser = UserCache.getUser(Long.parseLong(startUserId));
+/// /                            startUser.getDeptId();
+/// /                            // TODO 自行实现获取上级领导用户id
+/// /                        }
+/// /                    }
+/// /                }));
 //
 //
 //        if (event.getType() == FlowableEngineEventType.TASK_CREATED) {

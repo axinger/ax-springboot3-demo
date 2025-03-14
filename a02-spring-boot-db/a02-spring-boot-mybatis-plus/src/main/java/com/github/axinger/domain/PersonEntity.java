@@ -112,5 +112,6 @@ public class PersonEntity implements Serializable {
     @TableLogic
     @Column
     @Comment("逻辑删除")
+    @Builder.Default
     private Integer deleted = 0;
 }

@@ -1,6 +1,7 @@
 package com.github.axinger;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 /**
@@ -10,6 +11,7 @@ import lombok.ToString;
  * @description TODO
  * @createTime 2022年06月23日 10:28:00
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
 @ToString(callSuper = true)
 public class Cat extends Animal {

@@ -1,6 +1,7 @@
 package com.xing.entity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -14,6 +15,7 @@ import java.time.LocalDateTime;
  * @description TODO
  * @createTime 2022年05月06日 22:37:00
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
 @Document
 @ToString(callSuper = true)

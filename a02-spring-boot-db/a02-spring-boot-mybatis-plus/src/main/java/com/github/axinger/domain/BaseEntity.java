@@ -7,6 +7,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
@@ -62,5 +63,6 @@ public class BaseEntity implements Serializable {
     private Integer version;
 
     @TableField(exist = false)
+    @Builder.Default
     private Map<String, Object> param = new HashMap<>();
 }
