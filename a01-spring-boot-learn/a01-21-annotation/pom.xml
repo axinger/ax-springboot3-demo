@@ -6,7 +6,7 @@
     <parent>
         <artifactId>a01-spring-boot-learn</artifactId>
         <groupId>com.github.axinger</groupId>
-        <version>2024.12.01-3.4</version>
+        <version>2025.03.01-3.4</version>
     </parent>
 
     <artifactId>a01-21-annotation</artifactId>
