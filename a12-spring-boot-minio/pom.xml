@@ -76,11 +76,6 @@
             <artifactId>response-spring-boot-starter</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.github.axinger</groupId>
-            <artifactId>doc-spring-boot-starter</artifactId>
-        </dependency>
-
     </dependencies>
 
     <build>
