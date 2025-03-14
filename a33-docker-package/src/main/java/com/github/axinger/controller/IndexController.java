@@ -1,6 +1,6 @@
 package com.github.axinger.controller;
 
-import com.axing.common.response.result.Result;
+import com.axing.common.response.dto.Result;
 import com.github.axinger.domain.SysUser;
 import com.github.axinger.service.SysUserService;
 import lombok.extern.slf4j.Slf4j;
@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 

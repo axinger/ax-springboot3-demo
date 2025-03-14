@@ -3,12 +3,11 @@ package com.github.axinger.controller;
 import com.github.axinger.event.CustomEvent;
 import com.github.axinger.event.EventProducer;
 import com.github.axinger.service.IMyService;
+import jakarta.validation.constraints.NotEmpty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import jakarta.validation.constraints.NotEmpty;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;

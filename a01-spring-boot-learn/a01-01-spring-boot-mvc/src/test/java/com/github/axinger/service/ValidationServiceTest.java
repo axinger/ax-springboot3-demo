@@ -1,8 +1,8 @@
 package com.github.axinger.service;
 
 import cn.hutool.core.date.DateUtil;
-import com.github.axinger.dto.DateDTO;
-import com.github.axinger.dto.ObjectDTO;
+import com.github.axinger.model.dto.DateDTO;
+import com.github.axinger.model.dto.ParamDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -55,27 +55,27 @@ public class ValidationServiceTest {
 
     @Test
     void funOne_1() {
-        ObjectDTO dto = new ObjectDTO();
+        ParamDTO dto = new ParamDTO();
         validationService.funOne(dto);
     }
 
     @Test
     void funOne_2() {
-        ObjectDTO dto = new ObjectDTO();
+        ParamDTO dto = new ParamDTO();
         dto.setName("jim");
         validationService.funOne(dto);
     }
 
     @Test
     void funOne_3() {
-        ObjectDTO dto = new ObjectDTO();
+        ParamDTO dto = new ParamDTO();
         dto.setDate(new Date());
         validationService.funOne(dto);
     }
 
     @Test
     void funOne_4() {
-        ObjectDTO dto = new ObjectDTO();
+        ParamDTO dto = new ParamDTO();
         dto.setName("jim");
         dto.setDate(new Date());
         validationService.funOne(dto);

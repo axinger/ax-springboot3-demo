@@ -2,7 +2,7 @@ package com.axing.common.advice.response;
 
 import com.axing.common.advice.bean.AdviceProperties;
 import com.axing.common.advice.util.AdviceUtil;
-import com.axing.common.response.result.Result;
+import com.axing.common.response.dto.Result;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;

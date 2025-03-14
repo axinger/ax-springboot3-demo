@@ -32,14 +32,14 @@
 //
 //    @Override
 //    public void onEvent(FlowableEvent event) {
-////
-////        if (event.getType().equals(FlowableEngineEventType.PROCESS_STARTED)) {
-////            // 流程启动事件
-////            System.out.println("流程已启动");
-////        } else if (event.getType().equals(FlowableEngineEventType.TASK_COMPLETED)) {
-////            // 任务完成事件
-////            System.out.println("任务已完成");
-////        }
+/// /
+/// /        if (event.getType().equals(FlowableEngineEventType.PROCESS_STARTED)) {
+/// /            // 流程启动事件
+/// /            System.out.println("流程已启动");
+/// /        } else if (event.getType().equals(FlowableEngineEventType.TASK_COMPLETED)) {
+/// /            // 任务完成事件
+/// /            System.out.println("任务已完成");
+/// /        }
 //
 //        FlowableEntityEventImpl entityEvent = (FlowableEntityEventImpl) event;
 //        TaskEntity taskEntity = (TaskEntity) entityEvent.getEntity();

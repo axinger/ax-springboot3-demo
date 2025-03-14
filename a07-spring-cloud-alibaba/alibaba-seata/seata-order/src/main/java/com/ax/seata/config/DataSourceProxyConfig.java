@@ -15,8 +15,8 @@
 //@Configuration
 // public class DataSourceProxyConfig {
 //
-////    @Value("${mybatis.mapperLocations}")
-////    private String mapperLocations;
+/// /    @Value("${mybatis.mapperLocations}")
+/// /    private String mapperLocations;
 //
 //    @Bean
 //    @ConfigurationProperties(prefix = "spring.datasource")

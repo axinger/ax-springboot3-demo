@@ -10,29 +10,29 @@
 //
 //@SpringBootTest
 // class A23DemoApplicationTest {
-////    @Autowired
-////    private IotDBSessionConfig iotDBSessionConfig;
-////
-////    @Test
-////    void test() {
-////
-////        StringBuffer tableName = new StringBuffer();
-////        tableName.append("root").append(".").append("CP108").append(".").append("CP108_dev");
-////
-////
-////        long currentTime = System.currentTimeMillis();
-////
-////        List<String> iotMeasurements = new ArrayList<>();
-////        iotMeasurements.add("absoluteCoordinateX");
-////        iotMeasurements.add("absoluteCoordinateY");
-////
-////        List<String> iotValues = new ArrayList<>();
-////        iotValues.add("5");
-////        iotValues.add("6");
-////
-////        iotDBSessionConfig.insertRecord(tableName.toString(), currentTime, iotMeasurements, iotValues);
-////
-////    }
+/// /    @Autowired
+/// /    private IotDBSessionConfig iotDBSessionConfig;
+/// /
+/// /    @Test
+/// /    void test() {
+/// /
+/// /        StringBuffer tableName = new StringBuffer();
+/// /        tableName.append("root").append(".").append("CP108").append(".").append("CP108_dev");
+/// /
+/// /
+/// /        long currentTime = System.currentTimeMillis();
+/// /
+/// /        List<String> iotMeasurements = new ArrayList<>();
+/// /        iotMeasurements.add("absoluteCoordinateX");
+/// /        iotMeasurements.add("absoluteCoordinateY");
+/// /
+/// /        List<String> iotValues = new ArrayList<>();
+/// /        iotValues.add("5");
+/// /        iotValues.add("6");
+/// /
+/// /        iotDBSessionConfig.insertRecord(tableName.toString(), currentTime, iotMeasurements, iotValues);
+/// /
+/// /    }
 //
 //    @Autowired
 //    private IotDBConfig iotDBConfig;

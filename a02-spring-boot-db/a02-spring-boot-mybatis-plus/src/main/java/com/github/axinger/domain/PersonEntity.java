@@ -1,7 +1,7 @@
 package com.github.axinger.domain;
 
-import com.baomidou.mybatisplus.annotation.Version;
 import com.baomidou.mybatisplus.annotation.*;
+import com.baomidou.mybatisplus.annotation.Version;
 import com.github.axinger.model.Gender;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

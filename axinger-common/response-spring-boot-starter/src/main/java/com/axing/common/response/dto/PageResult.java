@@ -1,6 +1,5 @@
-package com.axing.common.vo;
+package com.axing.common.response.dto;
 
-import com.axing.common.response.dto.Result;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

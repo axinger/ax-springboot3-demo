@@ -2,8 +2,8 @@ package com.axing.common.advice.exception;
 
 import cn.hutool.core.util.StrUtil;
 import com.axing.common.advice.bean.AdviceProperties;
+import com.axing.common.response.dto.Result;
 import com.axing.common.response.exception.ServiceException;
-import com.axing.common.response.result.Result;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;

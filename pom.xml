@@ -100,7 +100,6 @@
         <module>a15-spring-boot-netty</module>
         <module>a16-spring-boot-shiro</module>
         <module>a16-spring-security</module>
-        <module>a17-spring-batch</module>
         <module>a18-custom-spring-boot-start</module>
         <module>a20-spring-boot-quartz</module>
         <module>a24-oauth2-client</module>
@@ -366,12 +365,12 @@
                 <groupId>io.minio</groupId>
                 <artifactId>minio</artifactId>
                 <version>${minio.version}</version>
-<!--                <exclusions>-->
-<!--                    <exclusion>-->
-<!--                        <artifactId>okhttp</artifactId>-->
-<!--                        <groupId>com.squareup.okhttp3</groupId>-->
-<!--                    </exclusion>-->
-<!--                </exclusions>-->
+                <!--                <exclusions>-->
+                <!--                    <exclusion>-->
+                <!--                        <artifactId>okhttp</artifactId>-->
+                <!--                        <groupId>com.squareup.okhttp3</groupId>-->
+                <!--                    </exclusion>-->
+                <!--                </exclusions>-->
             </dependency>
 
             <dependency>

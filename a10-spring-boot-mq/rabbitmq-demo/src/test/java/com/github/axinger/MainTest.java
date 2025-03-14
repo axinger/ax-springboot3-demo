@@ -79,7 +79,7 @@ class MainTest {
                 message,
                 messagePostProcessor -> {
                     // 配置消息的过期时间
-                    messagePostProcessor.getMessageProperties().setDelay(5 * 1000);
+                    messagePostProcessor.getMessageProperties().setDelayLong(5 * 1000L);
                     return messagePostProcessor;
                 }
         );
@@ -104,7 +104,7 @@ class MainTest {
                 message,
                 messagePostProcessor -> {
                     // 配置消息的过期时间
-                    messagePostProcessor.getMessageProperties().setDelay(5 * 1000);
+                    messagePostProcessor.getMessageProperties().setDelayLong(5 * 1000L);
                     return messagePostProcessor;
                 }
         );

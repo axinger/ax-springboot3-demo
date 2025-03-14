@@ -1,4 +1,4 @@
-package com.axing.common.response.result;
+package com.axing.common.response.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
@@ -22,6 +22,9 @@ public class Result<T> implements Serializable {
 
     @Schema(title = "状态码", description = "成功：200；失败：201")
     private Integer code = 200;
+
+    @Schema(title = "是否成功", description = "成功：true；失败：false")
+    private Boolean success = false;
 
     @Schema(title = "提示信息", description = "错误信息")
     private String msg = "";

@@ -4,13 +4,13 @@ import com.github.axinger.model.dto.DateDTO;
 import com.github.axinger.model.dto.LoginDTO;
 import com.github.axinger.model.dto.MyGroups;
 import com.github.axinger.model.dto.ParamDTO;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.groups.Default;
 import org.springframework.validation.annotation.Validated;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.groups.Default;
 import java.util.List;
 
 /**

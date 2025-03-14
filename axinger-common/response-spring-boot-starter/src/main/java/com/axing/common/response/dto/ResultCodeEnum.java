@@ -1,4 +1,4 @@
-package com.axing.common.response.result;
+package com.axing.common.response.dto;
 
 import lombok.Getter;
 

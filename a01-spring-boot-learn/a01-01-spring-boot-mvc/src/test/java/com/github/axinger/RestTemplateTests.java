@@ -122,21 +122,21 @@ public class RestTemplateTests {
                 .retrieve()
                 /// onStatus(HttpStatus::is2xxSuccessful) 方法本身并不是用来处理返回结果的，
                 /// 而是用来检查 HTTP 响应状态码是否属于 2xx 成功范围，并允许你在这个条件为真时执行一些特定的逻辑
-                .onStatus(HttpStatus::is2xxSuccessful, clientResponse -> {
+                .onStatus(HttpStatusCode::is2xxSuccessful, clientResponse -> {
                     System.out.println("Received a successful response." + clientResponse.statusCode());
                     return Mono.empty(); // 返回空的Mono，继续处理链
                 })
                 // 对于4xx客户端错误
-                .onStatus(HttpStatus::is4xxClientError, clientResponse ->
+                .onStatus(HttpStatusCode::is4xxClientError, clientResponse ->
                         Mono.error(new RuntimeException("4xx Client Error: " + clientResponse.statusCode())))
                 // 对于5xx服务器端错误
-                .onStatus(HttpStatus::is5xxServerError, clientResponse ->
+                .onStatus(HttpStatusCode::is5xxServerError, clientResponse ->
                         Mono.error(new RuntimeException("5xx Server Error: " + clientResponse.statusCode())))
                 // 将响应体映射为 ResponseEntity<Result<List<UserPojo>>>
                 .toEntity(type);
 
         entity.subscribe(val -> {
-            HttpStatus statusCode = val.getStatusCode();
+            HttpStatusCode statusCode = val.getStatusCode();
             Result<List<UserPojo<UserPojo.BookPojo>>> body = val.getBody();
             System.out.println("statusCode = " + statusCode);
             System.out.println("va1 = " + body);
@@ -155,16 +155,16 @@ public class RestTemplateTests {
                 .header("token", "tom")
                 .retrieve()
 
-                .onStatus(HttpStatus::is2xxSuccessful, clientResponse -> {
+                .onStatus(HttpStatusCode::is2xxSuccessful, clientResponse -> {
 // 当返回2xx状态码时执行的操作
                     System.out.println("Received a successful response." + clientResponse.statusCode());
 //                    System.out.println("Received a successful response." + clientResponse.bodyToMono(String.class).block());
                     return Mono.empty(); // 返回空的Mono，继续处理链
 
                 })
-                .onStatus(HttpStatus::is4xxClientError, clientResponse ->
+                .onStatus(HttpStatusCode::is4xxClientError, clientResponse ->
                         Mono.error(new RuntimeException("Client Error")))
-                .onStatus(HttpStatus::is5xxServerError, clientResponse ->
+                .onStatus(HttpStatusCode::is5xxServerError, clientResponse ->
                         Mono.error(new RuntimeException("Server Error")))
 
                 .bodyToMono(type);

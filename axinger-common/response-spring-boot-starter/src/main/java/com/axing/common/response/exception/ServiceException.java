@@ -1,6 +1,6 @@
 package com.axing.common.response.exception;
 
-import com.axing.common.response.result.ResultCodeEnum;
+import com.axing.common.response.dto.ResultCodeEnum;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;

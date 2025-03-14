@@ -2,7 +2,7 @@ package com.github.axinger.controller;
 
 import com.axing.common.minio.service.MinioService;
 import com.axing.common.minio.util.FilePathUtil;
-import com.axing.common.response.result.Result;
+import com.axing.common.response.dto.Result;
 import io.minio.MinioClient;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
