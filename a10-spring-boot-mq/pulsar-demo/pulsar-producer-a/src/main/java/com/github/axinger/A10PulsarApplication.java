@@ -6,10 +6,10 @@ import org.springframework.pulsar.annotation.EnablePulsar;
 
 @SpringBootApplication
 @EnablePulsar
-public class PulsarProducerApplication {
+public class A10PulsarApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(PulsarProducerApplication.class, args);
+        SpringApplication.run(A10PulsarApplication.class, args);
     }
 
 }

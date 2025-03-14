@@ -1,14 +1,13 @@
-version: 1.0.0
 server:
   port: 12022
 
 spring:
   application:
     version: 2.0.1
-    description: @my-env@
+    description: prd环境
 
-axing:
-  config:
+axinger:
+  user:
     username: jim
     password: 1234
   person:

@@ -17,12 +17,11 @@ import org.springframework.retry.annotation.EnableRetry;
                 })
 })
 @SpringBootApplication
-
-
-@EnableRetry(proxyTargetClass = true)
+//@EnableRetry(proxyTargetClass = true)
+@EnableRetry
 @Slf4j
+//@ServletComponentScan
 public class A01MVCApplication {
-
 
     static String My_Env;
 
@@ -35,4 +34,6 @@ public class A01MVCApplication {
     public void setMyEnv(String myEnv) {
         My_Env = myEnv;
     }
+
+
 }
