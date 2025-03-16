@@ -15,4 +15,25 @@
     <modules>
         <module>cloud-fetch-gateway-starter</module>
     </modules>
+
+    <!-- 在工具模块的 pom.xml 中添加 -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip> <!-- 禁用插件 -->
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                        <phase>none</phase> <!-- 彻底移除生命周期绑定 -->
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

@@ -1,12 +1,11 @@
-package com.github.axinger;
+package com.ax.juc;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-
 @SpringBootApplication
-public class AMain {
+public class Application {
     public static void main(String[] args) {
-        SpringApplication.run(AMain.class, args);
+        SpringApplication.run(Application.class, args);
     }
 }

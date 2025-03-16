@@ -10,7 +10,9 @@
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>axinger-spring-boot-starter</artifactId>
-
+    <properties>
+        <repackage.skip>true</repackage.skip>
+    </properties>
     <name>阿星自定义启动</name>
 
     <dependencies>

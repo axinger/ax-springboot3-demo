@@ -1,7 +1,6 @@
 package com.github.axinger.controller;
 
 import com.alibaba.fastjson2.JSONObject;
-import com.axing.common.response.dto.Result;
 import com.github.axinger.bean.ApplicationInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +12,7 @@ public class EnvController {
     private ApplicationInfo applicationInfo;
 
     @GetMapping("/")
-    public Result<?> test2() {
-        return Result.ok(JSONObject.from(applicationInfo));
+    public Object test2() {
+        return JSONObject.from(applicationInfo);
     }
 }

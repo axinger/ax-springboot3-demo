@@ -27,6 +27,7 @@
         <axinger.version>${project.version}</axinger.version>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
+        <repackage.skip>false</repackage.skip>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring-boot-admin.version>3.0.0</spring-boot-admin.version>
         <!--        <spring-cloud.version>2021.0.6</spring-cloud.version>-->
@@ -57,30 +58,30 @@
     </properties>
 
     <!--指定运行环境,每次切换需要更新一下maven,有缓存-->
-    <!--    <profiles>-->
-    <!--        <profile>-->
-    <!--            <id>dev</id>-->
-    <!--            <properties>-->
-    <!--                <env>dev</env>-->
-    <!--            </properties>-->
-    <!--        </profile>-->
-    <!--        <profile>-->
-    <!--            <id>prd</id>-->
-    <!--            <properties>-->
-    <!--                <env>prd</env>-->
-    <!--            </properties>-->
-    <!--            &lt;!&ndash;默认变量&ndash;&gt;-->
-    <!--            <activation>-->
-    <!--                <activeByDefault>true</activeByDefault>-->
-    <!--            </activation>-->
-    <!--        </profile>-->
-    <!--        <profile>-->
-    <!--            <id>test</id>-->
-    <!--            <properties>-->
-    <!--                <env>test</env>-->
-    <!--            </properties>-->
-    <!--        </profile>-->
-    <!--    </profiles>-->
+        <profiles>
+            <profile>
+                <id>my-dev</id>
+                <properties>
+                    <my-env>dev</my-env>
+                </properties>
+            </profile>
+            <profile>
+                <id>my-prd</id>
+                <properties>
+                    <my-env>prd</my-env>
+                </properties>
+                <!--默认变量-->
+                <activation>
+                    <activeByDefault>true</activeByDefault>
+                </activation>
+            </profile>
+            <profile>
+                <id>my-test</id>
+                <properties>
+                    <my-env>test</my-env>
+                </properties>
+            </profile>
+        </profiles>
 
 
     <modules>
@@ -128,10 +129,21 @@
 
     <dependencies>
 
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.boot</groupId>-->
+        <!--            <artifactId>spring-boot-configuration-processor</artifactId>-->
+        <!--            <optional>true</optional>-->
+        <!--        </dependency>-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <optional>true</optional>
         </dependency>
+
+        <!--        <dependency>-->
+        <!--            <groupId>org.projectlombok</groupId>-->
+        <!--            <artifactId>lombok</artifactId>-->
+        <!--        </dependency>-->
 
         <dependency>
             <groupId>cn.hutool</groupId>
@@ -176,6 +188,12 @@
             <!--                <scope>import</scope>-->
             <!--            </dependency>-->
 
+
+            <dependency>
+                <groupId>com.github.axinger</groupId>
+                <artifactId>a01-22-main-b</artifactId>
+                <version>${axinger.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>com.github.axinger</groupId>
@@ -334,12 +352,12 @@
                 <version>${spring-boot-admin.version}</version>
             </dependency>
 
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>${lombok.version}</version>
-                <scope>provided</scope>
-            </dependency>
+            <!--            <dependency>-->
+            <!--                <groupId>org.projectlombok</groupId>-->
+            <!--                <artifactId>lombok</artifactId>-->
+            <!--&lt;!&ndash;                <version>${lombok.version}</version>&ndash;&gt;-->
+            <!--                <scope>provided</scope>-->
+            <!--            </dependency>-->
 
             <!--            <dependency>-->
             <!--                <groupId>com.alibaba</groupId>-->
@@ -638,23 +656,22 @@
     </dependencyManagement>
 
     <build>
-        <!--        <resources>-->
-        <!--            <resource>-->
-        <!--                <directory>src/main/resources</directory>-->
-        <!--                <excludes>-->
-        <!--                    <exclude>application-*.yml</exclude>-->
-        <!--                </excludes>-->
-        <!--            </resource>-->
-        <!--            <resource>-->
-        <!--                <directory>src/main/resources</directory>-->
-        <!--                <filtering>true</filtering>-->
-        <!--                <includes>-->
-        <!--                    <include>application.yml</include>-->
-        <!--                    <include>application-${env}*.yml</include>-->
-        <!--                </includes>-->
-        <!--            </resource>-->
-        <!--        </resources>-->
-
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <excludes>
+                    <exclude>application-*.yml</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>application.yml</include>
+                    <include>application-${my-env}.yml</include>
+                </includes>
+            </resource>
+        </resources>
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -670,32 +687,47 @@
         </pluginManagement>
 
         <plugins>
+
+
             <!-- 统一管理父子模块的版本号 -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>versions-maven-plugin</artifactId>
                 <configuration>
+                    <!--不备份-->
                     <generateBackupPoms>false</generateBackupPoms>
                 </configuration>
             </plugin>
 
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
+                <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <!--跳过测试-->
-                    <skip>true</skip>
-                    <!--打包去除jar-->
-                    <!--                    <excludes>-->
-                    <!--                        <exclude>-->
-                    <!--                            <groupId>org.projectlombok</groupId>-->
-                    <!--                            <artifactId>lombok</artifactId>-->
-                    <!--                        </exclude>-->
-                    <!--                    </excludes>-->
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.springframework.boot</groupId>
+                            <artifactId>spring-boot-configuration-processor</artifactId>
+                        </path>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </path>
+                    </annotationProcessorPaths>
                 </configuration>
             </plugin>
-
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <skip>${repackage.skip}</skip>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
