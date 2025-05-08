@@ -1,6 +1,7 @@
 package com.axing.common.util.json;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -52,7 +53,7 @@ public class JsonUtil {
      * @return
      */
     @SneakyThrows
-    public static String writeValueAsString(Object obj) {
+    public static String writeValueAsString(Object obj) throws JsonProcessingException {
         return mapper.writeValueAsString(obj);
     }
 
@@ -65,7 +66,7 @@ public class JsonUtil {
      * @return
      */
     @SneakyThrows
-    public static <T> T readValue(String str, Class<T> tClass) {
+    public static <T> T readValue(String str, Class<T> tClass) throws JsonProcessingException{
         return mapper.readValue(str, tClass);
     }
 

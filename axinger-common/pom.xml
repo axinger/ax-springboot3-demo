@@ -13,7 +13,7 @@
     <name>阿星common工具类</name>
 
     <properties>
-        <java.version>17</java.version>
+
         <axing-project.version>${axinger.version}</axing-project.version>
     </properties>
 

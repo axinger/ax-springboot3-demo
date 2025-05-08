@@ -75,7 +75,7 @@ public class AsyncServiceImpl implements AsyncService {
 
         stopWatch.stop();
         String s = "统计完成时长" + stopWatch.getTotalTimeSeconds();
-        log.info(s);
+//        log.info(s);
 
     }
 

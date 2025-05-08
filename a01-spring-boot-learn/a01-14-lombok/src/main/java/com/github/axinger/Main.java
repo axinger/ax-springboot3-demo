@@ -3,8 +3,10 @@ package com.github.axinger;
 import com.axing.common.util.json.JsonUtil;
 import com.github.axinger.model.GetterSetterExample;
 import com.github.axinger.model.Person;
+import lombok.SneakyThrows;
 
 public class Main {
+    @SneakyThrows
     public static void main(String[] args) {
 
         Person person = new Person();

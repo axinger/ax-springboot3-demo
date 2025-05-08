@@ -5,8 +5,12 @@ import com.github.axinger.model.Person;
 import com.github.axinger.topic.Topic;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.pulsar.client.api.Consumer;
 import org.apache.pulsar.client.api.SubscriptionType;
+import org.springframework.boot.autoconfigure.pulsar.PulsarProperties;
+import org.springframework.messaging.Message;
 import org.springframework.pulsar.annotation.PulsarListener;
+import org.springframework.pulsar.listener.AckMode;
 import org.springframework.stereotype.Service;
 
 import java.util.concurrent.TimeUnit;
@@ -18,14 +22,13 @@ public class MyConsumer1 {
     @SneakyThrows
     @PulsarListener(
 //            properties = {  "receiverQueueSize=5000" },
-            concurrency = "10",
+            concurrency = "4",
             subscriptionType = SubscriptionType.Shared,
             topics = Topic.SHARED_TOPIC,
 //            schemaType = SchemaType.JSON,
 //            schemaType = SchemaType.JSON,
 //            schemaType = Schema.JSON(Person.class),
 //            schemaType = Schema.JSON(Class<Person>),
-
             subscriptionName = "my-subscription")
     public void consumeMessage(Person person) {
 

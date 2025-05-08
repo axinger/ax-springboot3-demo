@@ -1,0 +1,10 @@
+server:
+  servlet:
+    context-path: /
+  port: 12015
+
+# 启用虚拟线程
+spring:
+  threads:
+    virtual:
+      enabled: true
