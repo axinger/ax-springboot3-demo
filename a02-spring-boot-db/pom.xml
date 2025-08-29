@@ -19,7 +19,6 @@
         <module>db-mysql-starter</module>
         <module>a02-spring-boot-data-mongodb</module>
         <module>a02-spring-boot-iotdb</module>
-        <module>a02-spring-boot-postgres</module>
         <module>a02-spring-boot-data-es</module>
         <module>a02-spring-boot-data-es2</module>
     </modules>

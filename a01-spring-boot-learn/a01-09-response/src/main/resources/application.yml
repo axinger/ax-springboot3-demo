@@ -1,5 +1,0 @@
-axing:
-  response:
-    base-packages: com.tom.controller
-server:
-  port: 8701

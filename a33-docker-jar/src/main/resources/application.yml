@@ -1,7 +1,0 @@
-server:
-  port: 12025
-
-spring:
-  application:
-    version: 1.0.1
-    description: 开发环境
